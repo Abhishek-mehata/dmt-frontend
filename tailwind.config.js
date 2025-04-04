@@ -24,8 +24,9 @@ export default {
         'xss': '450px',
         'xs': '480px',   // Extra small devices
         'sm': '640px',   // Small devices (default)
-        'md': '768px',   // Medium devices (default)
+        'md': '796px',   // Medium devices (default)
         'sc': '992px',
+        'scc':"900px",
         'lg': '1024px',  // Large devices (default)
         'xl': '1280px',  // Extra large devices (default)
         '2xl': '1536px', // 2x large devices (default)

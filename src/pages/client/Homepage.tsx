@@ -9,7 +9,8 @@ import {
 } from "../../components";
 import { useAppSelector } from "../../hooks/useTypedSelectors";
 import { RootAppState } from "../../redux/store";
-import EventsCard from "./EventCard";
+import EventsCard from "./cards/EventCard";
+import TopDestinationsCard from "./cards/TopDestinationsCard";
 
 const Homepage = () => {
   const { places } = useAppSelector((state: RootAppState) => state.places);
@@ -27,6 +28,20 @@ const Homepage = () => {
             Featuredssd
           </h2> */}
 
+          {/* Div for top desitnations to explore */}
+          <div>
+            <h2 className={`text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight`}>Top Destination to Explore</h2>
+
+            <div className="cards-wrappper w-[100%] flex flex-wrap gap-3 items-center justify-center py-[15px] px-[10px]">
+              <TopDestinationsCard />
+              <TopDestinationsCard />
+              <TopDestinationsCard />
+              <TopDestinationsCard />
+              <TopDestinationsCard />
+              <TopDestinationsCard />
+            </div>
+          </div>
+
           {/* Popular Events Card Start */}
           <div>
             <h2
@@ -41,9 +56,12 @@ const Homepage = () => {
               <EventsCard />
               <EventsCard />
               <EventsCard />
+              {/* <EventsCard />
               <EventsCard />
               <EventsCard />
               <EventsCard />
+              <EventsCard />
+              <EventsCard /> */}
             </div>
 
           </div>

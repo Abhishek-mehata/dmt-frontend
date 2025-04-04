@@ -1,7 +1,7 @@
 import React from 'react';
-import "./index.css"
-import img from "../dashboard/Events/event-details/images/l1.jpg"
-import starImg from "../../assets/svg/star.svg"
+import "../index.css"
+import img from "../../dashboard/Events/event-details/images/l1.jpg"
+import starImg from "../../../assets/svg/star.svg"
 
 const EventCard = () => {
     return (

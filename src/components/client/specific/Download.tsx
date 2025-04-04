@@ -1,7 +1,9 @@
 import { FC } from "react";
 import { ClientContainer, Section } from "../..";
 import { Images, Svg } from "../../../assets";
-import EventCard from "../shared/Cards/EventCard"
+// import EventCard from "../shared/Cards/EventCard"
+import DownloadSiteButton from "./DownloadSiteButton";
+
 const Download: FC = () => {
   return (
     <Section className="">
@@ -26,6 +28,22 @@ const Download: FC = () => {
                 Save 10% on tours and activities is as easy as booking with the
                 DMT App.
               </p>
+
+              {/* Download Site Button */}
+              <div>
+                <DownloadSiteButton />
+              </div>
+              {/* <button className="rounded h-[45px] text-white py-[10px] px-[20px] bg-[#9c58df] flex items-center justify-center text-[16px] font-medium">Download Shortcut</button> */}
+{/*                 
+                <span className={`text-sm text-white font-semibold`}>
+                  Download the app
+                </span>
+                <img
+                  alt="playstore icon"
+                  src={Svg.play_store_svg}
+                  className={`h-8 w-8 ml-2`}
+                /> */}
+              {/* </button> */}
             </div>
           </div>
           <div className={`relative md:w-2/4`}>
