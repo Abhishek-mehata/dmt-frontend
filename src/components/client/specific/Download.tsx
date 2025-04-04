@@ -1,10 +1,15 @@
 import { FC } from "react";
 import { ClientContainer, Section } from "../..";
 import { Images, Svg } from "../../../assets";
-
+import EventCard from "../shared/Cards/EventCard"
 const Download: FC = () => {
   return (
-    <Section>
+    <Section className="">
+      <div className="w-full flex justify-center mb-10">
+        {/* <Card /> */}
+        {/* <EventCard /> */}
+        {/* hello world */}
+      </div>
       <ClientContainer className={`h-[26rem] w-full`}>
         <div
           className={`flex flex-col-reverse md:flex-row rounded-lg shadow lg:shadow-2xl bg-fade-purple overflow-hidden md:overflow-visible`}

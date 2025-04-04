@@ -9,6 +9,7 @@ import {
 } from "../../components";
 import { useAppSelector } from "../../hooks/useTypedSelectors";
 import { RootAppState } from "../../redux/store";
+import EventsCard from "./EventCard";
 
 const Homepage = () => {
   const { places } = useAppSelector((state: RootAppState) => state.places);
@@ -20,11 +21,33 @@ const Homepage = () => {
       <Activities data={places} />
       <Section>
         <ClientContainer>
-          <h2
+          {/* <h2
             className={`text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight`}
           >
-            Featured
-          </h2>
+            Featuredssd
+          </h2> */}
+
+          {/* Popular Events Card Start */}
+          <div>
+            <h2
+              className={`text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight`}
+            >
+              Popular Events
+            </h2>
+
+            <div className="cards w-[100%] flex flex-wrap gap-3 items-center justify-center py-[15px] px-[10px]">
+              <EventsCard />
+              <EventsCard />
+              <EventsCard />
+              <EventsCard />
+              <EventsCard />
+              <EventsCard />
+              <EventsCard />
+              <EventsCard />
+            </div>
+
+          </div>
+
           <div
             className={`grid gap-8 grid-flow-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 mt-10`}
           >

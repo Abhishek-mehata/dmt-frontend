@@ -31,7 +31,10 @@ const ClientLayout = () => {
       <div className={`block relative -z-10 h-20 w-full`} />
       <ClientNavbar />
       <Outlet />
+      {/* <EventCard /> */}
+      
       {pathname !== "/search" && <Footer />}
+
     </div>
   );
 };

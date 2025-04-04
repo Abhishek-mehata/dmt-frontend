@@ -8,6 +8,7 @@ import { Loader } from "./components";
 import { persistor } from "../src/redux/store"
 import { useEffect } from "react";
 
+
 function App() {
   const loading = useSelector((state: RootAppState) => state.ui.loading);
   const token = useSelector((state: RootAppState) => state.auth.token);

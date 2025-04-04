@@ -19,6 +19,18 @@ export default {
         warning: "#F4DE19",
         danger: "#E2445C",
       },
+      screens: {
+        'xsss': '370px',
+        'xss': '450px',
+        'xs': '480px',   // Extra small devices
+        'sm': '640px',   // Small devices (default)
+        'md': '768px',   // Medium devices (default)
+        'sc': '992px',
+        'lg': '1024px',  // Large devices (default)
+        'xl': '1280px',  // Extra large devices (default)
+        '2xl': '1536px', // 2x large devices (default)
+        '3xl': '1800px', // Custom extra large breakpoint
+      },
     },
   },
   plugins: [],
