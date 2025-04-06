@@ -7,7 +7,7 @@ import ForgotPass from "../components/auth/ForgotPass";
 import { ClientLayout, DashboardLayout, Loader } from "../components";
 import EventsDetailsPage from "../pages/dashboard/Events/EventsDetailsPage";
 import EventDetails from "../pages/dashboard/Events/event-details/EventDetails"
-import AbhiStays from "../pages/dashboard/Stays/StaysDetails"
+// import AbhiStays from "../pages/dashboard/Stays/StaysDetails"
 import {
   DashboardPage as Dashboard,
   ProfilePage as Profile,
@@ -186,10 +186,10 @@ export default function Router() {
           element: <EventDetails />,
         },
         ///stays details
-        {
-          path: "/stays/:id",
-          element: <AbhiStays />,
-        },
+        // {
+        //   path: "/stays/:id",
+        //   element: <AbhiStays />,
+        // },
 
         {
           path: "/:category/details/:id",
