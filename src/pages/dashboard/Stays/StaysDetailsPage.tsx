@@ -227,3 +227,15 @@ const StaysDetailsPage: FC = () => {
 };
 
 export default StaysDetailsPage;
+
+
+
+// import React from 'react'
+
+// const StaysDetailsPage = () => {
+//   return (
+//     <div>StaysDetailsPage</div>
+//   )
+// }
+
+// export default StaysDetailsPage

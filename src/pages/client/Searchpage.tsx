@@ -223,7 +223,7 @@ const Searchpage = () => {
                     <button className="flex items-center w-full justify-center gap-2 p-3 rounded-md bg-primary text-white mt-4">
                         <CiSearch />
                         Find a place
-                    </button>
+                    </button >
                 </form>
                 }
                 

@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useAppSelector } from "../../../hooks/useTypedSelectors";
 import { RootAppState } from "../../../redux/store";
+// import EventCard from "../../Stays&EventsCard/EventCard";
 
 const { RangePicker } = DatePicker;
 
@@ -118,6 +119,9 @@ const Filter = () => {
         className={`bg-primary xl:rounded-tr-md lg:rounded-l-none rounded-t-none rounded-b-md sm:rounded-bl-none min-w-[150px] `}
       >
         <span className={`text-base text-white `}>Explore</span>
+        {/* <EventCard/> */}
+        {/* <span className={`text-base text-white text-3xl `}>Explore</span> */}
+
       </button>
     </div>
   );

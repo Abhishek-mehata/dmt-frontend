@@ -5,6 +5,9 @@ import GuestGuard from "../components/guards/GuestGuard";
 // import AuthGuard from "../components/guards/AuthGuard";
 import ForgotPass from "../components/auth/ForgotPass";
 import { ClientLayout, DashboardLayout, Loader } from "../components";
+import EventsDetailsPage from "../pages/dashboard/Events/EventsDetailsPage";
+import EventDetails from "../pages/dashboard/Events/event-details/EventDetails"
+// import AbhiStays from "../pages/dashboard/Stays/StaysDetails"
 import {
   DashboardPage as Dashboard,
   ProfilePage as Profile,
@@ -44,8 +47,8 @@ const TripBoardPage = Loadable(TripBoard);
 const ConfirmEmailPage = Loadable(ConfirmEmail);
 const LoginPage = Loadable(lazy(() => import("../pages/auth/Loginpage")));
 const RegisterPage = Loadable(lazy(() => import("../pages/auth/RegisterPage")));
-const OtpVerify = Loadable(lazy(()=> import("../pages/auth/OtpVerify") ));
-const PasswordResetPage  = Loadable(lazy(()=> import("../pages/auth/PasswordResetPage")))
+const OtpVerify = Loadable(lazy(() => import("../pages/auth/OtpVerify")));
+const PasswordResetPage = Loadable(lazy(() => import("../pages/auth/PasswordResetPage")))
 // Dashboard pages
 const DashboardPage = Loadable(Dashboard);
 const StaysPage = Loadable(Stays);
@@ -95,7 +98,7 @@ export default function Router() {
           element: (
             <GuestGuard>
               <OtpVerify />
-             </GuestGuard>
+            </GuestGuard>
           ),
         },
         {
@@ -114,7 +117,7 @@ export default function Router() {
             </GuestGuard>
           ),
         },
-        
+
       ],
     },
     {
@@ -122,7 +125,7 @@ export default function Router() {
       element: (
         <>
           {/* <AuthGuard> */}
-            <DashboardLayout />
+          <DashboardLayout />
           {/* </AuthGuard> */}
         </>
       ),
@@ -137,7 +140,7 @@ export default function Router() {
         { path: "stays/:id/details", element: <StaysDetailsPage /> },
         // { path: "stays/:id/rooms", element: <StaysRoomsPage /> },
         { path: "rooms", element: <StaysRoomsPage /> },
-        
+
         // { path: "stays/:id/rooms/create", element: <StaysAddRoomPage /> },
         { path: "rooms/create", element: <StaysAddRoomPage /> },
         { path: "rooms/edit/:roomId", element: <StaysAddRoomPage /> },  // ✅ Route for editing
@@ -175,6 +178,19 @@ export default function Router() {
           path: "/search",
           element: <Searchpage />,
         },
+
+        ///Event details
+        {
+          path: "/events/:id",
+          // element: <div>Events Page</div>,
+          element: <EventDetails />,
+        },
+        ///stays details
+        // {
+        //   path: "/stays/:id",
+        //   element: <AbhiStays />,
+        // },
+
         {
           path: "/:category/details/:id",
           element: <DetailsPage />,
