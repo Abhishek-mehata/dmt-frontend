@@ -209,6 +209,7 @@ export const initRoomState: RoomModel = {
   discount: 10,
   transferService: "NOT_INCLUDED",
   extraAmount: 0,
+  images:[],
 };
 
 export const placeInitState: AddPlaceModel = {
@@ -231,4 +232,6 @@ export const placeInitState: AddPlaceModel = {
   place_type: "WOW",
   booking_policy: "FLEXIBLE",
   images: [],
+  // amenities: [], // ✅ Ensure this is initialized
+  // safetyAmenities: [], 
 };

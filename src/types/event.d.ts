@@ -17,6 +17,7 @@ export interface EventModel {
   businessRegistrationNbr: string;
   businessTaxIdNbr: string;
   price: number;
+  isBoosted:boolean;
   isPaid: boolean;
   listingPaidType: "PROMOTED" | "FEATURED";
   noOfPromotionDays: number;
@@ -57,6 +58,7 @@ export interface EventModel {
     latitude: number;
     longitude: number;
   };
+  
 }
 
 export interface EventRequestBody {

@@ -10,7 +10,8 @@ import { useAppSelector,useAppDispatch } from "../../../hooks/useTypedSelectors"
 import { RootAppState } from "../../../redux/store";
 import DeleteEvent from "./Delete/DeleteEvent";
 import { getAllEvents } from "../../../redux/actions/events"; // Fetch events
-
+// import api from "../../../api";
+import BoostEventModal from "./BoostEventModal";
 
 const items = [
   {
@@ -26,7 +27,10 @@ const items = [
 const EventsPage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  
+  const [boostEventId, setBoostEventId] = useState<string | null>(null);
+
+const openBoostModal = (id: string) => setBoostEventId(id);
+const closeBoostModal = () => setBoostEventId(null);
   // Get events from Redux
   const { events } = useAppSelector((state: RootAppState) => state.events);
   const {
@@ -43,6 +47,15 @@ const [selectEvent, setSelectEvent] = useState<string>(
   }, [dispatch]);
   
  
+  // const boostEvent = async (eventId: string) => {
+  //   try {
+  //     const response = await api.post("/payment/order/boosting-event", { eventId });
+  //     console.log(response,'response')
+  //     message.success("Event boosted successfully!");
+  //   } catch (error) {
+  //     message.error("Failed to boost event. Try again.");
+  //   }
+  // };
 
 // const columns: TableColumnsType<EventModel> = [
 //   {
@@ -110,11 +123,51 @@ const columns: TableColumnsType<EventModel> = [
   { title: "Location", dataIndex: "location" },
   { title: "Business Nature", dataIndex: "businessNature" },
   { title: "Price", dataIndex: "price" },
+  // {
+  //   title: "Actions",
+  //   dataIndex: "actions",
+  //   render: (_, { id }: EventModel) => id && <DeleteEvent id={id} />,
+  // },
   {
     title: "Actions",
     dataIndex: "actions",
-    render: (_, { id }: EventModel) => id && <DeleteEvent id={id} />,
+    // render: (_, { id }: EventModel) => (
+    //   <div className="flex gap-2">
+    //     <DeleteEvent id={id} />
+    //     {/* <Button title="Boost" onClick={() => openBoostModal(id)} /> */}
+    //     <Button title="Boost" onClick={() => openBoostModal(id.toString())} />
+
+    //   </div>
+    // ),
+    render: (_, record: EventModel) => (
+      <div className="flex gap-2">
+        <DeleteEvent id={record.id} />
+        {record.isBoosted ? (
+          <Button
+            title="Boosted"
+            // variant="outlined"
+            className="text-green-600 border-green-600 cursor-default"
+            disabled
+          />
+        ) : (
+          <Button
+            title="Boost"
+            onClick={() => openBoostModal(record.id.toString())}
+          />
+        )}
+      </div>
+    ),
   },
+  // {
+  //   title: "Actions",
+  //   dataIndex: "actions",
+  //   render: (_, { id }: EventModel) => (
+  //     <div className="flex gap-2">
+  //       <DeleteEvent id={id} />
+  //       <Button title="Boost" onClick={() => boostEvent(String(id))}  />
+  //       </div>
+  //   ),
+  // },
 ];
 const onSelectEvent: MenuProps["onClick"] = ({ key }) => setSelectEvent(key);
 
@@ -242,7 +295,13 @@ const onSelectEvent: MenuProps["onClick"] = ({ key }) => setSelectEvent(key);
           </div>
         </div>
       </div> */}
+      <BoostEventModal
+  eventId={boostEventId?.toString() || ""}
+  isOpen={!!boostEventId}
+  onClose={closeBoostModal}
+/>
     </div>
+    
   );
 };
 

@@ -75,6 +75,10 @@ export interface Place {
   cover_image: CoverImage;
   images: Image[];
   _count: Count;
+  isBoosted:boolean;
+  // ✅ Add amenities and safetyAmenities as string arrays
+  // amenities: string[]; 
+  // safetyAmenities: string[];
 }
 
 export interface RoomModel {
@@ -114,6 +118,8 @@ export interface AddPlaceModel {
   place_type: string;
   booking_policy: "FLEXIBLE";
   images: File[];
+  amenities: string[]; //  Ensure this is present
+  safetyAmenities: string[]; //  Add this field
 }
 
 interface IinitialState {

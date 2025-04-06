@@ -57,7 +57,7 @@ export const getSellerPlaces =
   export const createPlace = (body: any, navigate: ReturnType<typeof useNavigate>) => async (dispatch: AppDispatch) => {
     try {
       dispatch(switchLoading());
-      
+       
       const {
         data: { data, success },
       } = await api.post("/places", body, {
@@ -68,10 +68,10 @@ export const getSellerPlaces =
       dispatch(addPlaceToStore(data));
       dispatch(storeNewPlaceDetails(placeInitState));
       message.success("Successfully created!");
-  
+      
       //  Redirect to `/app/stays`
       navigate("/app/stays");
-  
+      
       return success;
       
     } catch (err: any) {
@@ -119,7 +119,7 @@ export const getSellerPlaces =
 export const updateStay = (body: any, stayId: string) => async () => {
   try {
     await api.patch(`/places/${stayId}`, body);
-
+  
     message.success("Successfully updated!");
   } catch (err: any) {
     message.error(
@@ -154,7 +154,7 @@ export const deletePlaceImage =
   (stayId: string, assetId: string) => async () => {
     try {
       await api.delete(`/places/${stayId}/images/${assetId}`);
-
+                                       
       message.success("Successfully deleted!");
     } catch (err: any) {
       message.error(err.response.data?.message);
@@ -166,10 +166,8 @@ export const getPlaceById =
     try {
       dispatch(switchLoading());
       const { data } = await api.get(`/places/${placeId}`);
-
       dispatch(storePageDetails(data));
-      dispatch(getPlaceRooms(placeId));
-
+      dispatch(getPlaceRooms(placeId));                             
       dispatch(switchLoading());
       return data;
     } catch (err: any) {

@@ -895,6 +895,7 @@ const RoomForm: FC = () => {
     transferService: "",
     extraAmount: 0,
     images: [] as File[],
+    
   });
 
   // useEffect(() => {
@@ -950,7 +951,7 @@ const RoomForm: FC = () => {
           console.error("Failed to fetch room:", error);
         }
       };
-  
+       
       fetchRoom();
     }
   }, [dispatch, placeId, roomId]);
@@ -1114,7 +1115,7 @@ const RoomForm: FC = () => {
       // }}
       onSubmit={async (values, { setSubmitting }) => {
         const formData = new FormData();
-      
+        
         // Append fields to formData
         formData.append("place_id", String(values.place_id));
         formData.append("title", values.title);
@@ -1224,7 +1225,7 @@ const RoomForm: FC = () => {
                 )}
               </Field>
             </AntForm.Item>
-
+            
             {values.transferService === "EXTRA_COST" && (
               <AntForm.Item label="Extra Amount">
                 <Field as={InputNumber} name="extraAmount" />
