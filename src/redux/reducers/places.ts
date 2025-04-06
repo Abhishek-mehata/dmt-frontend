@@ -30,6 +30,7 @@ const initialState: IinitialState = {
     },
   },
   activePlaces: [],
+
 };
 
 const placeSlice = createSlice({
