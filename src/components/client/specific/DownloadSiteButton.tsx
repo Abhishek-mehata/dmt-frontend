@@ -10,7 +10,7 @@
 //         zip.file("index.html", "<h1>Welcome to My Website</h1>");
 //         zip.file("style.css", "body { background: #f4f4f4; }");
 //         zip.file("script.js", "console.log('Hello World');");
-        
+
 
 
 //         // Create a folder inside the ZIP
@@ -144,7 +144,7 @@ const DownloadSite: React.FC = () => {
     return (
         <button
             onClick={handleDownload}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-700 transition"
+            className="rounded h-[45px] text-white py-[10px] px-[20px] bg-[#9c58df] flex items-center justify-center text-[16px] font-medium"
         >
             Download Offline Website
         </button>
