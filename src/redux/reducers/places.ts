@@ -30,6 +30,9 @@ const initialState: IinitialState = {
     },
   },
   activePlaces: [],
+  latestPlaces: [],                // ✅ Add this
+  loadingLatestPlaces: false, 
+  
 
 };
 
@@ -55,6 +58,12 @@ const placeSlice = createSlice({
       { payload }: PayloadAction<MarkedLocation>
     ) => {
       state.mapMarkedLocation = payload;
+    },
+    storeLatestPlaces: (state, action: PayloadAction<Place[]>) => {
+      state.latestPlaces = action.payload;
+    },
+    setLoadingLatestPlaces: (state, action: PayloadAction<boolean>) => {
+      state.loadingLatestPlaces = action.payload;
     },
     storeNewPlaceDetails: (
       state,
@@ -138,6 +147,8 @@ export const {
   storeActivePlaces,
   clearAddPlaceDetails,
   setMapMarkedLocation,
+  storeLatestPlaces,           
+  setLoadingLatestPlaces,
 } = placeSlice.actions;
 
 export default placeSlice.reducer;

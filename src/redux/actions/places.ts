@@ -8,6 +8,8 @@ import {
   storePlaces,
   storeRooms,
   storeSellerPlaces,
+  storeLatestPlaces,
+  setLoadingLatestPlaces,
 } from "../reducers/places";
 import api, { httpHeader, multipartHeader } from "../../api";
 import { message } from "antd";
@@ -422,5 +424,21 @@ export const deleteRoom = (roomId: string) => async () => {
         ? `Switch to SELLER`
         : err.response.data?.message
     );
+  }
+};
+export const getLatestPlaces = () => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(setLoadingLatestPlaces(true)); // if you have a loading flag
+    const response = await api.get("/explore/latestplaces");
+    console.log("🌍 Full Latest Places API Response:", response);
+
+    // Now check the structure and safely grab the data
+    const places = response.data?.data || response.data; // fallback if there's no `data.data`
+    dispatch(storeLatestPlaces(places)); // your actual reducer here
+  } catch (err: any) {
+    console.error("❌ Error fetching latest places:", err);
+    message.error(err.response?.data?.message || "Failed to fetch latest places");
+  } finally {
+    dispatch(setLoadingLatestPlaces(false)); // if you have this flag
   }
 };

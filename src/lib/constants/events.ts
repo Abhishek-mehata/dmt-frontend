@@ -260,4 +260,5 @@ export const initEventDetailsState: EventModel = {
     latitude: 0,
     longitude: 0,
   },
+  isBoosted: false
 };
