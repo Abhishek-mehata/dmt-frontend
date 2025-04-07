@@ -77,26 +77,6 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
-"@datadog/browser-core@6.6.2":
-  version "6.6.2"
-  resolved "https://registry.npmjs.org/@datadog/browser-core/-/browser-core-6.6.2.tgz"
-  integrity sha512-UiAbhDdT7FyBMtPEGS+GS8HmUi3zDcTVThXAmetWSjUq/PjkjmlHE5t8gnghcSXXy5fXnOqLLgR4nugL7gGrEA==
-
-"@datadog/browser-rum-core@6.6.2":
-  version "6.6.2"
-  resolved "https://registry.npmjs.org/@datadog/browser-rum-core/-/browser-rum-core-6.6.2.tgz"
-  integrity sha512-y5PG3plSJHvqn7c9SnQ2GcVPbmscqbamm9EaPRQ3xnbfwn4NAUeW85lCIZYZZNDtiaYsF0uBnGzdMRrpCJEocw==
-  dependencies:
-    "@datadog/browser-core" "6.6.2"
-
-"@datadog/browser-rum@^6.6.2":
-  version "6.6.2"
-  resolved "https://registry.npmjs.org/@datadog/browser-rum/-/browser-rum-6.6.2.tgz"
-  integrity sha512-PTDB0hDk/XZbkTXPdv2jEv9MkZUaxMENi3+EcNqgYZXQ1t4ZcqA2vXvNugjLqQAlr/nDJfZhmrPp9Aj1+GRG7g==
-  dependencies:
-    "@datadog/browser-core" "6.6.2"
-    "@datadog/browser-rum-core" "6.6.2"
-
 "@emotion/hash@^0.8.0":
   version "0.8.0"
   resolved "https://registry.npmmirror.com/@emotion/hash/-/hash-0.8.0.tgz"
@@ -107,10 +87,10 @@
   resolved "https://registry.npmmirror.com/@emotion/unitless/-/unitless-0.7.5.tgz"
   integrity sha512-OWORNpfjMsSSUBVrRBVGECkhWcULOAJz9ZW8uK9qgxD+87M7jHRcvh/A96XXNhXTLmKcoYSQtBEX7lHMO7YRwg==
 
-"@esbuild/darwin-arm64@0.21.5":
+"@esbuild/win32-x64@0.21.5":
   version "0.21.5"
-  resolved "https://registry.npmmirror.com/@esbuild/darwin-arm64/-/darwin-arm64-0.21.5.tgz"
-  integrity sha512-DwqXqZyuk5AiWWf3UfLiRDJ5EDd49zg6O9wclZ7kUMv2WRFr4HKjXp/5t8JZ11QbQfUS6/cRCKGwYhtNAY88kQ==
+  resolved "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.21.5.tgz"
+  integrity sha512-tQd/1efJuzPC6rCFwEvLtci/xNFcTZknmXs98FYDfGE4wP9ClFV98nyKrzJKVPMhdDnjzLhdUyMX4PsQAPjwIw==
 
 "@eslint-community/eslint-utils@^4.2.0", "@eslint-community/eslint-utils@^4.4.0":
   version "4.4.1"
@@ -413,28 +393,6 @@
     proc-log "^5.0.0"
     which "^5.0.0"
 
-"@paypal/paypal-js@^8.1.2":
-  version "8.2.0"
-  resolved "https://registry.npmjs.org/@paypal/paypal-js/-/paypal-js-8.2.0.tgz"
-  integrity sha512-hLg5wNORW3WiyMiRNJOm6cN2IqjPlClpxd971bEdm0LNpbbejQZYtesb0/0arTnySSbGcxg7MxjkZ/N5Z5qBNQ==
-  dependencies:
-    promise-polyfill "^8.3.0"
-
-"@paypal/react-paypal-js@^8.8.2":
-  version "8.8.2"
-  resolved "https://registry.npmjs.org/@paypal/react-paypal-js/-/react-paypal-js-8.8.2.tgz"
-  integrity sha512-ffSOb6o2pgdbZVpUgpGuvRApkUfo9D+9KKjZ44if79yjhiYCVXOu2XOCR1+aC1RfuUzwEDV4S3+OA1x0OSeCVw==
-  dependencies:
-    "@paypal/paypal-js" "^8.1.2"
-    "@paypal/sdk-constants" "^1.0.122"
-
-"@paypal/sdk-constants@^1.0.122":
-  version "1.0.153"
-  resolved "https://registry.npmjs.org/@paypal/sdk-constants/-/sdk-constants-1.0.153.tgz"
-  integrity sha512-wrPXK9ckwYBOOLyHfsGGtYjf9vOQgPSOh08DEeGRr/KBamQgvHYEG2soSMPlJuLfker32n1x5wvnWCcYP+ea9w==
-  dependencies:
-    hi-base32 "^0.5.0"
-
 "@pkgjs/parseargs@^0.11.0":
   version "0.11.0"
   resolved "https://registry.npmmirror.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz"
@@ -547,10 +505,10 @@
   resolved "https://registry.npmmirror.com/@remix-run/router/-/router-1.22.0.tgz"
   integrity sha512-MBOl8MeOzpK0HQQQshKB7pABXbmyHizdTpqnrIseTbsv0nAepwC2ENZa1aaBExNQcpLoXmWthhak8SABLzvGPw==
 
-"@rollup/rollup-darwin-arm64@4.34.6":
+"@rollup/rollup-win32-x64-msvc@4.34.6":
   version "4.34.6"
-  resolved "https://registry.npmmirror.com/@rollup/rollup-darwin-arm64/-/rollup-darwin-arm64-4.34.6.tgz"
-  integrity sha512-z9Ib+OzqN3DZEjX7PDQMHEhtF+t6Mi2z/ueChQPLS/qUMKY7Ybn5A2ggFoKRNRh1q1T03YTQfBTQCJZiepESAg==
+  resolved "https://registry.npmjs.org/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.34.6.tgz"
+  integrity sha512-0PVwmgzZ8+TZ9oGBmdZoQVXflbvuwzN/HRclujpl4N/q3i+y0lqLw8n1bXA8ru3sApDjlmONaNAuYr38y1Kr9w==
 
 "@sigstore/bundle@^3.0.0":
   version "3.0.0"
@@ -588,10 +546,10 @@
     "@sigstore/core" "^2.0.0"
     "@sigstore/protobuf-specs" "^0.3.2"
 
-"@swc/core-darwin-arm64@1.10.14":
+"@swc/core-win32-x64-msvc@1.10.14":
   version "1.10.14"
-  resolved "https://registry.npmmirror.com/@swc/core-darwin-arm64/-/core-darwin-arm64-1.10.14.tgz"
-  integrity sha512-Dh4VyrhDDb05tdRmqJ/MucOPMTnrB4pRJol18HVyLlqu1HOT5EzonUniNTCdQbUXjgdv5UVJSTE1lYTzrp+myA==
+  resolved "https://registry.npmjs.org/@swc/core-win32-x64-msvc/-/core-win32-x64-msvc-1.10.14.tgz"
+  integrity sha512-TYtWkUSMkjs0jGPeWdtWbex4B+DlQZmN/ySVLiPI+EltYCLEXsFMkVFq6aWn48dqFHggFK0UYfvDrJUR2c3Qxg==
 
 "@swc/core@^1.7.26":
   version "1.10.14"
@@ -1301,6 +1259,7 @@ dlv@^1.1.3:
   version "0.0.0"
   resolved "file:"
   dependencies:
+    "@babel/runtime" "^7.27.0"
     "@react-oauth/google" "^0.12.1"
     "@reduxjs/toolkit" "^2.2.5"
     antd "^5.17.2"
@@ -1658,11 +1617,6 @@ fs.realpath@^1.0.0:
   resolved "https://registry.npmmirror.com/fs.realpath/-/fs.realpath-1.0.0.tgz"
   integrity sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==
 
-fsevents@~2.3.2, fsevents@~2.3.3:
-  version "2.3.3"
-  resolved "https://registry.npmmirror.com/fsevents/-/fsevents-2.3.3.tgz"
-  integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
-
 function-bind@^1.1.2:
   version "1.1.2"
   resolved "https://registry.npmmirror.com/function-bind/-/function-bind-1.1.2.tgz"
@@ -1758,11 +1712,6 @@ hasown@^2.0.2:
   integrity sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==
   dependencies:
     function-bind "^1.1.2"
-
-hi-base32@^0.5.0:
-  version "0.5.1"
-  resolved "https://registry.npmjs.org/hi-base32/-/hi-base32-0.5.1.tgz"
-  integrity sha512-EmBBpvdYh/4XxsnUybsPag6VikPYnN30td+vQk+GI3qpahVEG9+gTkG0aXVxTjBqQ5T6ijbWIu77O+C5WFWsnA==
 
 hoist-non-react-statics@^3.3.0:
   version "3.3.2"
@@ -2859,11 +2808,6 @@ promise-inflight@^1.0.1:
   resolved "https://registry.npmmirror.com/promise-inflight/-/promise-inflight-1.0.1.tgz"
   integrity sha512-6zWPyEOFaQBJYcGMHBKTKJ3u6TBsnMFOIZSa6ce1e/ZrrsOlnHRHbabMjLiBYKp+n44X9eUI6VUPaukCXHuG4g==
 
-promise-polyfill@^8.3.0:
-  version "8.3.0"
-  resolved "https://registry.npmjs.org/promise-polyfill/-/promise-polyfill-8.3.0.tgz"
-  integrity sha512-H5oELycFml5yto/atYqmjyigJoAo3+OXwolYiH7OfQuYlAqhxNvTfiNMbV9hsC6Yp83yE5r2KTVmtrG6R9i6Pg==
-
 promise-retry@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmmirror.com/promise-retry/-/promise-retry-2.0.1.tgz"
@@ -3263,7 +3207,7 @@ rc-virtual-list@^3.14.2, rc-virtual-list@^3.5.1, rc-virtual-list@^3.5.2:
     rc-resize-observer "^1.0.0"
     rc-util "^5.36.0"
 
-react-dom@*, react-dom@^18.0.0, react-dom@^18.3.1, react-dom@>=16, react-dom@>=16.0.0, react-dom@>=16.11.0, react-dom@>=16.8, react-dom@>=16.8.0, react-dom@>=16.9.0, react-dom@>=18.1.0:
+react-dom@*, "react-dom@^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", react-dom@^18.0.0, react-dom@^18.3.1, react-dom@>=16, react-dom@>=16.0.0, react-dom@>=16.11.0, react-dom@>=16.8, react-dom@>=16.8.0, react-dom@>=16.9.0, react-dom@>=18.1.0:
   version "18.3.1"
   resolved "https://registry.npmmirror.com/react-dom/-/react-dom-18.3.1.tgz"
   integrity sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==
@@ -3385,7 +3329,7 @@ react-tailwindcss-datepicker@^1.6.6:
   resolved "https://registry.npmmirror.com/react-tailwindcss-datepicker/-/react-tailwindcss-datepicker-1.7.4.tgz"
   integrity sha512-UBlDFS9Wzu/1bL59LhAZafo8r/3AhHRRMgC5h1XdQeQnQcwWtRkXgUtPrRryHYaH0v6DalAyum24iamlnYElGA==
 
-react@*, "react@^16.3.0 || ^17.0.0 || ^18.0.0", "react@^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.9.0 || ^17.0.0 || ^18 || ^19", "react@^17.0.2 || ^18.2.0 || ^19.0.0", "react@^18.0 || ^19", react@^18.0.0, react@^18.3.1, react@>=16, react@>=16.0.0, react@>=16.11.0, react@>=16.3.0, react@>=16.8, react@>=16.8.0, react@>=16.9.0, react@>=18.1.0:
+react@*, "react@^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.3.0 || ^17.0.0 || ^18.0.0", "react@^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.9.0 || ^17.0.0 || ^18 || ^19", "react@^17.0.2 || ^18.2.0 || ^19.0.0", "react@^18.0 || ^19", react@^18.0.0, react@^18.3.1, react@>=15, react@>=16, react@>=16.0.0, react@>=16.11.0, react@>=16.3.0, react@>=16.8, react@>=16.8.0, react@>=16.9.0, react@>=18.1.0:
   version "18.3.1"
   resolved "https://registry.npmmirror.com/react/-/react-18.3.1.tgz"
   integrity sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==

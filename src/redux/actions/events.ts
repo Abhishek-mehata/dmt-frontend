@@ -7,6 +7,7 @@ import {
   storeEvents,
   selectedRequestedEvent,
   storeEventsReservations,
+  storeUpcomingEvents, setLoadingUpcomingEvents ,
 } from "../reducers/events";
 import { message } from "antd";
 import api, { multipartHeader } from "../../api";
@@ -140,3 +141,43 @@ export const approveRequestedEvent =
       message.error(err.response.data?.message);
     }
   };
+  // export const getUpcomingEvents = () => async (dispatch: AppDispatch) => {
+  //   try {
+  //     const {
+  //       data: { data },
+  //     } = await api.get("/explore/eventsupcoming");
+  
+  //     dispatch(storeUpcomingEvents(data)); // 👈 dispatch to upcomingEvents
+  //   } catch (err: any) {
+  //     message.error(err.response?.data?.message || "Failed to fetch upcoming events");
+  //   }
+  // };
+  // export const getUpcomingEvents = () => async (dispatch: AppDispatch) => {
+  //   try {
+  //     dispatch(setLoadingUpcomingEvents(true));
+  //     const {
+  //       data: { data },
+  //     } = await api.get("/explore/eventsupcoming");
+  //     dispatch(storeUpcomingEvents(data));
+  //   } catch (err: any) {
+  //     message.error(err.response?.data?.message || "Failed to fetch upcoming events");
+  //   } finally {
+  //     dispatch(setLoadingUpcomingEvents(false));
+  //   }
+  // };
+  export const getUpcomingEvents = () => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(setLoadingUpcomingEvents(true));
+      const response = await api.get("/explore/eventsupcoming");
+      console.log("📦 Full API Response:", response);
+  
+      const events = response.data?.data || response.data; // Safe fallback
+      dispatch(storeUpcomingEvents(events));
+    } catch (err: any) {
+      console.error("API Error:", err);
+      message.error(err.response?.data?.message || "Failed to fetch upcoming events");
+    } finally {
+      dispatch(setLoadingUpcomingEvents(false));
+    }
+  };
+  

@@ -11,6 +11,8 @@ interface IinitialState {
   eventsReviews: any[];
   addEventsDetails: EventModel;
   selectedRequestedEvent?: any;
+  upcomingEvents: EventModel[]; // <-- Correct type
+  loadingUpcomingEvents: boolean; 
 }
 
 const initialState: IinitialState = {
@@ -20,6 +22,10 @@ const initialState: IinitialState = {
   eventsReviews: [],
   addEventsDetails: initEventDetailsState,
   selectedRequestedEvent: [],
+  upcomingEvents: [],
+  loadingUpcomingEvents: false,
+
+
 };
 
 const eventSlice = createSlice({
@@ -32,6 +38,15 @@ const eventSlice = createSlice({
         hosted: payload,
       };
     },
+
+// Add to reducers
+setLoadingUpcomingEvents: (state, action: PayloadAction<boolean>) => {
+  state.loadingUpcomingEvents = action.payload;
+},
+storeUpcomingEvents: (state, action: PayloadAction<EventModel[]>) => {
+  state.upcomingEvents = action.payload;
+},
+
     storeEventsReservations: (state, { payload }) => {
       return {
         ...state,
@@ -92,6 +107,9 @@ export const {
   removeEventsFromStore,
   selectedRequestedEvent,
   storeEventsReservations,
+  storeUpcomingEvents,
+  setLoadingUpcomingEvents, //  new export
+
 } = eventSlice.actions;
 
 export default eventSlice.reducer;

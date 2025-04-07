@@ -132,6 +132,8 @@ interface IinitialState {
   addPlaceDetails: AddPlaceModel;
   mapMarkedLocation: MarkedLocation;
   activePlaces: any[];
+  latestPlaces: Place[];
+  loadingLatestPlaces: boolean;
 }
 
 export interface BedModel {

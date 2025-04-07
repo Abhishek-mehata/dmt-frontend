@@ -7,10 +7,12 @@ import {
   PlaceCard,
   Section,
 } from "../../components";
-import { useAppSelector } from "../../hooks/useTypedSelectors";
+import { useAppSelector ,useAppDispatch } from "../../hooks/useTypedSelectors";
 import { RootAppState } from "../../redux/store";
-import EventsCard from "./cards/EventCard";
+// import EventsCard from "./cards/EventCard";
 import TopDestinationsCard from "./cards/TopDestinationsCard";
+import { useEffect } from "react";
+// import { useDispatch } from "react-redux";
 // import Filter from "../../components/client/specific/Filter";
 import i1 from "../../assets/images/starting_city_1.jpg";
 import i2 from "../../assets/images/starting_city_2.jpg";
@@ -18,11 +20,26 @@ import i3 from "../../assets/images/starting_city_3.jpg";
 import i4 from "../../assets/images/starting_city_4.jpg";
 import i5 from "../../assets/images/starting_city_5.jpg";
 import i6 from "../../assets/images/starting_city_6.jpg";
-
+import { getUpcomingEvents } from "../../redux/actions/events";
+import { getLatestPlaces } from "../../redux/actions/places";
+// http://localhost:8000/v1/explore/boosted,
+// http://localhost:8000/v1/explore/latestplaces,
+// http://localhost:8000/v1/explore/eventsupcoming
 const Homepage = () => {
   const { places } = useAppSelector((state: RootAppState) => state.places);
-  const { events } = useAppSelector((state: RootAppState) => state.events);
+  // const { events } = useAppSelector((state: RootAppState) => state.events);
+  const dispatch = useAppDispatch();
+  const { latestPlaces, loadingLatestPlaces } = useAppSelector((state) => state.places);
+  const { upcomingEvents, loadingUpcomingEvents } = useAppSelector(
+    (state: RootAppState) => state.events
+  );
+useEffect(() => {
+  dispatch(getUpcomingEvents());
+  dispatch(getLatestPlaces());
 
+}, [dispatch]);
+
+  console.log(upcomingEvents,loadingUpcomingEvents,'eeeeeeee')
   return (
     <>
       <Hero />
@@ -55,7 +72,7 @@ const Homepage = () => {
           </div>
 
           {/* Popular Events Card Start */}
-          <div className="mt-8">
+          {/* <div className="mt-8">
             <h2
               className={`text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight`}
             >
@@ -63,40 +80,76 @@ const Homepage = () => {
             </h2>
 
             <div className="cards w-[100%] flex flex-wrap gap-3 items-center justify-center py-[15px] px-[10px]">
+            
               <EventsCard />
-              <EventsCard />
-              <EventsCard />
-              <EventsCard />
-              <EventsCard />
-              <EventsCard />
-              <EventsCard />
-              <EventsCard />
-              <EventsCard />
-              <EventsCard />
-              <EventsCard />
-              <EventsCard />
-              {/* <EventsCard />
-              <EventsCard />
-              <EventsCard />
-              <EventsCard />
-              <EventsCard />
-              <EventsCard /> */}
+           
             </div>
 
-          </div>
+          </div> */}
+          <div className="mt-10">
+          <h2 className="text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight mb-8">
+          Popular Events
+  </h2>
 
-          <div
+  {loadingUpcomingEvents ? (
+        <p className="text-center text-gray-500">Loading...</p>
+      ) : upcomingEvents.length === 0 ? (
+    <p className="text-center text-gray-500">No events found.</p>
+  ) : (
+    <div className="grid gap-8 grid-flow-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
+      {upcomingEvents.map((event) => (
+        <EventCard key={event.id} data={event} />
+      ))}
+    </div>
+  )}
+</div>
+
+          {/* <div
             className={`grid gap-8 grid-flow-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 mt-10`}
           >
+              <h2
+              className={`text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight`}
+            >
+              Popular Places
+            </h2>
             {places.map((item, i) => (
               <PlaceCard data={item} key={i} />
             ))}
-          </div>
+          </div> */}
+             {/* <div
+            className={`grid gap-8 grid-flow-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 mt-10`}
+          >
+              <h2
+              className={`text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight`}
+            >
+              Popular Places
+            </h2>
+              <PlaceCard  />
+          </div> */}
+           <div className="mt-10">
+      {/* Heading */}
+      <h2 className="text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight mb-8">
+        Popular Places
+      </h2>
+
+      {/* Loading state */}
+      {loadingLatestPlaces ? (
+        <p className="text-center text-gray-500">Loading...</p>
+      ) : latestPlaces.length === 0 ? (
+        <p className="text-center text-gray-500">No places found.</p>
+      ) : (
+        <div className="grid gap-8 grid-flow-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
+       {latestPlaces.map((place) => (
+  <PlaceCard key={place.id} data={place} />
+))}
+        </div>
+      )}
+    </div>
         </ClientContainer>
       </Section>
       <Download />
       <Section>
-        <ClientContainer>
+        {/* <ClientContainer>
           <h2
             className={`text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight`}
           >
@@ -109,7 +162,39 @@ const Homepage = () => {
               <EventCard data={item} key={i} />
             ))}
           </div>
-        </ClientContainer>
+        </ClientContainer> */}
+        <Section>
+  <ClientContainer>
+    <h2 className="text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight">
+      Upcoming Events
+    </h2>
+
+    {/* {loadingUpcomingEvents ? (
+      <p className="text-center text-gray-500 mt-6">Loading upcoming events...</p>
+    ) : upcomingEvents?.length === 0 ? (
+      <p className="text-center text-gray-500 mt-6">No upcoming events at the moment.</p>
+    ) : (
+      <div className="grid gap-8 grid-flow-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 mt-10">
+        {upcomingEvents.map((item, i) => (
+          <EventCard data={item} key={i} />
+        ))}
+      </div>
+    )} */}
+    {loadingUpcomingEvents ? (
+  <p className="text-center text-gray-500 mt-6">Loading upcoming events...</p>
+) : !Array.isArray(upcomingEvents) || upcomingEvents.length === 0 ? (
+  <p className="text-center text-gray-500 mt-6">No upcoming events at the moment.</p>
+) : (
+  <div className="grid gap-8 grid-flow-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 mt-10">
+    {upcomingEvents.map((item, i) => (
+      <EventCard data={item} key={i} />
+    ))}
+  </div>
+)}
+
+  </ClientContainer>
+</Section>
+
       </Section>
     </>
   );
