@@ -22,6 +22,7 @@ import i5 from "../../assets/images/starting_city_5.jpg";
 import i6 from "../../assets/images/starting_city_6.jpg";
 import { getUpcomingEvents } from "../../redux/actions/events";
 import { getLatestPlaces } from "../../redux/actions/places";
+// import { Link } from "lucide-react";
 // http://localhost:8000/v1/explore/boosted,
 // http://localhost:8000/v1/explore/latestplaces,
 // http://localhost:8000/v1/explore/eventsupcoming
@@ -98,7 +99,9 @@ useEffect(() => {
   ) : (
     <div className="grid gap-8 grid-flow-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
       {upcomingEvents.map((event) => (
+        // <Link to={`/events/${event.id}`} key={event.id}>
         <EventCard key={event.id} data={event} />
+        // </Link>
       ))}
     </div>
   )}

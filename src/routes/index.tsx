@@ -5,7 +5,7 @@ import GuestGuard from "../components/guards/GuestGuard";
 // import AuthGuard from "../components/guards/AuthGuard";
 import ForgotPass from "../components/auth/ForgotPass";
 import { ClientLayout, DashboardLayout, Loader } from "../components";
-import EventsDetailsPage from "../pages/dashboard/Events/EventsDetailsPage";
+// import EventsDetailsPage from "../pages/dashboard/Events/EventsDetailsPage";
 import EventDetails from "../pages/dashboard/Events/event-details/EventDetails"
 // import AbhiStays from "../pages/dashboard/Stays/StaysDetails"
 import {
@@ -28,6 +28,7 @@ import {
 } from "../pages";
 import PropertyPage from "../pages/dashboard/Properties/PropertyPage";
 import AddPropertyForm from "../pages/dashboard/Properties/Create/AddProperties";
+import AuthGuard from "../components/guards/AuthGuard";
 
 const Loadable = (Component: any) => (props: any) => {
   return (
@@ -124,9 +125,9 @@ export default function Router() {
       path: "app",
       element: (
         <>
-          {/* <AuthGuard> */}
+          <AuthGuard>
           <DashboardLayout />
-          {/* </AuthGuard> */}
+          </AuthGuard>
         </>
       ),
       children: [
@@ -183,7 +184,7 @@ export default function Router() {
         {
           path: "/events/:id",
           // element: <div>Events Page</div>,
-          element: <EventDetails />,
+          element: <EventDetails  />,
         },
         ///stays details
         // {

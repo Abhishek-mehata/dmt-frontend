@@ -3,28 +3,28 @@ import { ClientNavbar, Footer } from "..";
 import { useAppDispatch, useAppSelector } from "../../hooks/useTypedSelectors";
 import { RootAppState } from "../../redux/store";
 import { useEffect } from "react";
-import { getPlaces, getActivePlaces } from "../../redux/actions/places";
-import { getAllEvents, getEventReservations } from "../../redux/actions/events";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { getPlaces, getActivePlaces, getLatestPlaces } from "../../redux/actions/places";
+import { getAllEvents, getEventReservations, getUpcomingEvents } from "../../redux/actions/events";
+import { useNavigate } from "react-router-dom";
 
 const ClientLayout = () => {
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
   const { user } = useAppSelector((state: RootAppState) => state.auth);
-  const navigate = useNavigate(); //  Get navigate function
-
+  const navigate = useNavigate();
+  
   useEffect(() => {
-    dispatch(getPlaces());
     dispatch(getActivePlaces());
-
-    dispatch(getAllEvents());
-    dispatch(getEventReservations());
+    dispatch(getUpcomingEvents());
+    dispatch(getLatestPlaces());
+    // dispatch(getAllEvents());
   }, []);
 
-  if (user.role !== "BUYER") {
-    // return <Navigate to="/app/dashboard" replace />;
-    navigate("/app/dashboard")
-  }
+  // useEffect(() => {
+  //   if (user?.role && user.role !== "BUYER") {
+  //     navigate("/app/dashboard", { replace: true });
+  //   }
+  // }, [user, navigate]);
 
   return (
     <div className={`w-full h-full`}>
@@ -32,9 +32,7 @@ const ClientLayout = () => {
       <ClientNavbar />
       <Outlet />
       {/* <EventCard /> */}
-      
       {pathname !== "/search" && <Footer />}
-
     </div>
   );
 };

@@ -10,7 +10,7 @@ const EventCard: FC<{ data: EventModel }> = ({ data }) => {
    console.log(data,'data')
   return (
     <NavLink
-      to={`/events/details/${id}`}
+      to={`/events/${id}`}
       className={`w-full bg-white shadow-lg rounded-lg overflow-hidden smooth hover:scale-105`}
     >
       {/* <img

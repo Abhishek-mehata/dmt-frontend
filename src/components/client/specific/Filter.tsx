@@ -12,9 +12,9 @@ const { RangePicker } = DatePicker;
 
 const items = [
   { label: "Select Service", value: "" },
-  { label: "Stays", value: "stays" },
-  { label: "Online", value: "online" },
-  { label: "Onsite", value: "onsite" },
+  { label: "Stays", value: "place" },
+  { label: "Online", value: "onlineevent" },
+  { label: "Onsite", value: "onsiteevent" },
 ];
 
 const Filter = () => {
