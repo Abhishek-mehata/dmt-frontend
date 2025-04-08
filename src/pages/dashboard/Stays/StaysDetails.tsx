@@ -3,7 +3,7 @@ import { IoCaretDownOutline } from "react-icons/io5";
 import { LuShare } from "react-icons/lu";
 import { FaAngleDown } from "react-icons/fa6";
 import { FaCheck } from "react-icons/fa";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { BiDumbbell } from "react-icons/bi";
 import { GrElevator } from "react-icons/gr";
 import { MdOutlineFireplace } from "react-icons/md";
@@ -23,6 +23,8 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { MdOutlineAccessTime } from "react-icons/md";
+import api from "../../../api";
+import { useParams } from "react-router-dom";
 
 const StaysDetails = () => {
   const goodToKnow = [
@@ -182,6 +184,7 @@ const StaysDetails = () => {
 
   ];
 
+  const { id } = useParams(); // fetch ID from URL
 
   const [count, setCount] = useState(true);
   const ref = useRef<HTMLInputElement>(null);
@@ -202,6 +205,108 @@ const StaysDetails = () => {
       return ref.current?.classList.remove("lg:block");
     }
   };
+  interface PlaceDetails {
+    title?: string;
+    description?: string;
+    currency?: string | null;
+    price?: number | null;
+    place_type?: string;
+    street?: string;
+    city?: string;
+    province?: string;
+    postal_code?: string;
+    country?: string;
+    rating?: number | null;
+    subtitle?: string;
+    listing_status?: "ACTIVE" | "INACTIVE" | string;
+    booking_policy?: "FLEXIBLE" | "STRICT" | string;
+    latitude?: number;
+    longitude?: number;
+    businessNature?: "BUSINESS" | "INDIVIDUAL" | string;
+    individualNbr?: string | null;
+    individualTaxIdNbr?: string | null;
+    businessRegistrationNbr?: string;
+    businessTaxIdNbr?: string;
+    user_id?: number;
+    cover_image_id?: number;
+    createdAt?: string;
+    updatedAt?: string;
+    amenities?: string[];
+    safetyAmenities?: string[];
+    isBoosted?: boolean;
+    images?: {
+      id: number;
+      original_name: string;
+      url: string;
+      mimetype: string;
+      uid: string;
+      file_key: string;
+      place_id: number;
+      eventListingId: number | null;
+      createdAt: string;
+    }[];
+    user?: {
+      id: number;
+      firstName: string;
+      lastName: string;
+      email: string;
+      password: string;
+      phoneNumber: string | null;
+      country: string | null;
+      role: "SELLER" | "BUYER" | string;
+      isSeller: boolean;
+      isEmailConfirmed: boolean;
+      emailVerifyToken: string | null;
+      passwordResetToken: string | null;
+      isPhoneNumberConfirmed: boolean;
+      isCountryConfirmed: boolean;
+      status: "ACTIVE" | "INACTIVE" | string;
+      createdAt: string;
+      updatedAt: string;
+    };
+    cover_image?: {
+      id: number;
+      original_name: string;
+      url: string;
+      mimetype: string;
+      uid: string;
+      file_key: string;
+      place_id: number;
+      eventListingId: number | null;
+      createdAt: string;
+    };
+    rooms?: {
+      id: number;
+      title: string;
+      price: number;
+      stock: number;
+      room_type: "SINGLE" | "DOUBLE" | "SUITE" | string;
+      isDiscountAvailable: boolean;
+      discount: number | null;
+      transferService: "INCLUDED" | "NOT_INCLUDED" | string;
+      extraAmount: number | null;
+      place_id: number;
+      createdAt: string;
+      images: string[];
+    }[];
+  }
+  
+const [placeDetails, setPlaceDetails] = useState<PlaceDetails>({});
+  
+  const fetchPlaceDetails = async () => {
+    try {
+    const res = await api.get(`/explore/place/${id}`);
+    setPlaceDetails(res.data); // Axios puts the data inside res.data
+    } catch (error) {
+    console.error("Error fetching event:", error);
+    }
+};
+console.log(placeDetails, "placeDetails")
+useEffect(() => {
+    if (id) {
+      fetchPlaceDetails();
+    }
+}, [ id]);
 
   return (
     <>
@@ -313,12 +418,12 @@ const StaysDetails = () => {
             {/* share button div */}
             <div className="flex justify-between lg:mx-20 ">
               <div>
-                <h1 className="text-xl font-semibold md:text-2xl ">Test</h1>
+                <h1 className="text-xl font-semibold md:text-2xl ">{placeDetails?.title||"villa"}</h1>
                 <p className="flex py-1 opacity-60 text-sm ">
                   <i className="text-[#9427F7]">
                     <FaLocationDot />
                   </i>
-                  विराटनगर, <span>Nepal</span>
+                  {placeDetails?.street||"विराटनगर"}
                 </p>
               </div>
 
@@ -359,7 +464,7 @@ const StaysDetails = () => {
 
             {/* images for mid and large devices */}
 
-            <div className="hidden md:block lg:flex lg:gap-10 xl: lg:justify-center lg:items-center lg:px-2  ">
+            {/* <div className="hidden md:block lg:flex lg:gap-10 xl: lg:justify-center lg:items-center lg:px-2  ">
               <div className=" lg:w-[50%] ">
                 <img
                   className="w-full h-[400px] rounded-md object-cover mt-5 border-2 m-1 "
@@ -394,7 +499,126 @@ const StaysDetails = () => {
                   />
                 </div>
               </div>
-            </div>
+            </div> */}
+   {/* {placeDetails?.images && placeDetails.images.length >= 0 && (
+  <div className="hidden md:block lg:flex lg:gap-10 xl: lg:justify-center lg:items-center lg:px-2">
+    <div className="lg:w-[50%]">
+      <img
+        className="w-full h-[400px] rounded-md object-cover mt-5 border-2 m-1"
+        src={placeDetails?.images[0]?.url}
+        alt="Main"
+      />
+    </div>
+    <div className="flex gap-5 justify-center items-center px-1 pl-2 lg:flex lg:gap-3 lg:items-end lg:justify-evenly">
+      <div className="w-[50%]">
+        <img
+          className="w-full h-[200px] rounded-md object-cover mt-5 border"
+          src={placeDetails?.images[1]?.url}
+          alt="Sub 1"
+        />
+        <img
+          className="w-full h-[200px] rounded-md object-cover mt-5"
+          src={placeDetails?.images[2]?.url}
+          alt="Sub 2"
+        />
+      </div>
+      <div className="w-[50%]">
+        <img
+          className="w-full h-[200px] rounded-md object-cover mt-5"
+          src={placeDetails?.images[3]?.url}
+          alt="Sub 3"
+        />
+        <img
+          className="w-full h-[200px] rounded-md object-cover mt-5"
+          src={placeDetails?.images[4]?.url}
+          alt="Sub 4"
+        />
+      </div>
+    </div>
+  </div>
+)} */}
+
+{placeDetails.images&&placeDetails?.images?.length > 0 && (
+  <>
+    {placeDetails.images&&placeDetails.images.length === 1 && (
+      <div className="lg:flex lg:justify-center lg:items-center lg:px-2">
+        <div className="lg:w-[50%]">
+          <img
+            className="w-full h-[400px] rounded-md object-cover mt-5 border-2 m-1"
+            src={placeDetails.images[0].url}
+            alt="Main"
+          />
+        </div>
+      </div>
+    )}
+
+    {placeDetails.images&&placeDetails.images.length === 2 && (
+      <div className="flex flex-wrap justify-center gap-4 mt-5">
+        {placeDetails.images.slice(0, 2).map((img, index) => (
+          <img
+            key={index}
+            className="w-[48%] h-[300px] rounded-md object-cover border"
+            src={img.url}
+            alt={`Image ${index + 1}`}
+          />
+        ))}
+      </div>
+    )}
+
+    {placeDetails.images&&placeDetails.images.length === 3 ||placeDetails.images&& placeDetails.images.length === 4 ? (
+      <div className="flex flex-wrap justify-center gap-4 mt-5">
+        {placeDetails.images.slice(0, 4).map((img, index) => (
+          <img
+            key={index}
+            className="w-[45%] h-[200px] rounded-md object-cover border"
+            src={img.url}
+            alt={`Image ${index + 1}`}
+          />
+        ))}
+      </div>
+    ) : null}
+
+    {placeDetails.images&&placeDetails.images.length >= 5 && (
+      <div className="hidden md:block lg:flex lg:gap-10 xl: lg:justify-center lg:items-center lg:px-2">
+        <div className="lg:w-[50%]">
+          <img
+            className="w-full h-[400px] rounded-md object-cover mt-5 border-2 m-1"
+            src={placeDetails.images[0].url}
+            alt="Main"
+          />
+        </div>
+        <div className="flex gap-5 justify-center items-center px-1 pl-2 lg:flex lg:gap-3 lg:items-end lg:justify-evenly">
+          <div className="w-[50%]">
+            <img
+              className="w-full h-[200px] rounded-md object-cover mt-5 border"
+              src={placeDetails.images[1]?.url}
+              alt="Sub 1"
+            />
+            <img
+              className="w-full h-[200px] rounded-md object-cover mt-5"
+              src={placeDetails.images[2]?.url}
+              alt="Sub 2"
+            />
+          </div>
+          <div className="w-[50%]">
+            <img
+              className="w-full h-[200px] rounded-md object-cover mt-5"
+              src={placeDetails.images[3]?.url}
+              alt="Sub 3"
+            />
+            <img
+              className="w-full h-[200px] rounded-md object-cover mt-5"
+              src={placeDetails.images[4]?.url}
+              alt="Sub 4"
+            />
+          </div>
+        </div>
+      </div>
+    )}
+  </>
+)}
+
+
           </div>
 
           {/* images for mid and large devices--end-- */}
@@ -417,15 +641,14 @@ const StaysDetails = () => {
                 Description
               </h1>
               <p className="w-[90%] opacity-70">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse
-                amet at, quam enim repellendus numquam harum aperiam debitis a
-                sapiente?
+               {placeDetails?.description||"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esseamet at, quam enim repellendus numquam harum aperiam debitis asapiente?"}
               </p>
             </div>
           </div>
           {/* img & description end */}
 
           {/* -----card1----- */}
+          {placeDetails.rooms&&placeDetails.rooms.length >= 0 && (
           <div
             id="rooms"
             className="card-wrapper -mt-36 pt-36 md:-mt-40 md:pt-40 md:px-20 md:pr-24"
@@ -433,7 +656,7 @@ const StaysDetails = () => {
             <h1 className="text-xl font-semibold md:text-3xl pt-9 ">
               Choose your room
             </h1>
-            <div className="flex flex-col gap-3 mt-5 md:flex-row md:gap-5 md:w-[95%] ">
+            {/* <div className="flex flex-col gap-3 mt-5 md:flex-row md:gap-5 md:w-[95%] ">
               <div
                 className=" bg-[#F4F4F4] border-[#9427F7] border h-auto max-w-[520px] w-[90%] lg:w-[85%] md:w-[80%] md:h-[310px] p-4 xl:h-[410px]
            rounded-md px-3 text-sm flex flex-col gap-2 md:pt-5 "
@@ -461,9 +684,7 @@ const StaysDetails = () => {
                   </button>
                 </div>
               </div>
-              {/* -----card1 end----- */}
-
-              {/* -----card2----- */}
+             
               <div
                 className=" bg-[#F4F4F4] border-[#9427F7] border max-w-[520px] h-auto w-[90%] lg:w-[85%] md:w-[80%] md:h-[310px] xl:h-[410px] p-4
             rounded-md px-3 text-sm flex flex-col gap-2 "
@@ -525,8 +746,68 @@ const StaysDetails = () => {
                   )}
                 </div>
               </div>
-            </div>
+            </div> */}
+            <div className="flex flex-col gap-3 mt-5 md:flex-row md:gap-5 md:w-[95%] flex-wrap">
+  {placeDetails?.rooms?.map((room) => (
+    <div
+      key={room.id}
+      className="bg-[#F4F4F4] border-[#9427F7] border max-w-[520px] h-auto w-[90%] lg:w-[85%] md:w-[80%] md:h-[310px] xl:h-[410px] p-4 rounded-md px-3 text-sm flex flex-col gap-2"
+    >
+      <img
+        className="object-cover w-full h-[200px] rounded-md md:h-[140px] xl:h-[220px]"
+        src={room.images[0] || "/fallback-image.jpg"} // fallback if image is missing
+        alt={room.title}
+      />
+      <h1 className="text-[16px] font-semibold pt-2">
+        {room.title}
+      </h1>
+      <ul className="list-disc list-inside flex flex-col gap-2">
+        <li>Room Type: {room.room_type} - Stock: {room.stock}</li>
+        <li>
+          <span className="hover:text-[#9427F7] transition-all inline-flex items-center">
+            <button>More details</button>
+            <i className="scale-[0.8]">
+              <FaAngleDown />
+            </i>
+          </span>
+        </li>
+      </ul>
+      <div className="flex justify-between items-center">
+        <span>
+          <h1>NPR {room.price}</h1>
+          <p>per night</p>
+        </span>
+        {count ? (
+          <button
+            onClick={() => {
+              setCount(false);
+              StickyDivChange();
+              StickyDivChange2();
+            }}
+            className="bg-[#9427F7] shadow-md shadow-[#bab9c6] text-white font-semibold rounded-xl p-[10px] px-[14px] text-sm"
+          >
+            Reserve
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              setCount(true);
+              StickyDivChange();
+              StickyDivChange2();
+            }}
+            className="bg-[#ffffff] text-[#9427F7] font-semibold shadow-md shadow-[#bab9c6] rounded-xl p-[10px] px-[14px] text-sm flex justify-center items-center gap-1"
+          >
+            <FaCheck />
+            Selected
+          </button>
+        )}
+      </div>
+    </div>
+  ))}
+</div>
+
           </div>
+          )}
           {/* -----card2----- end  */}
 
           {/* Amenities ( Public Area ) */}

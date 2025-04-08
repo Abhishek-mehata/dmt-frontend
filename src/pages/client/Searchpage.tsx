@@ -104,8 +104,8 @@ const Searchpage = () => {
         type: type as Category,
         destination,
       });
-    }
-  }, [start_date, end_date, type, destination]);
+    }},[destination, end_date, start_date, type])
+  // }, [start_date, end_date, type, destination]);
 
   // Debounced API call
   const fetchSearchResults = useMemo(
@@ -384,14 +384,23 @@ const Searchpage = () => {
           </div>
           {/* Location Card E */}
           {/* Map S */}
-          <div className={`w-full md:block`}>
+          {/* <div className={`w-full md:block`}> */}
             <PositionViewMap
-              position={{
-                lat: searchResults[0]?.latitude || searchResults[0]?.OnlineEvent?.dateRanges?.[0]?.latitude || 27.717245,
-                lng: searchResults[0]?.longitude || searchResults[0]?.OnlineEvent?.dateRanges?.[0]?.longitude || 85.323959,
-              }}
+              // position={{
+              //   lat: searchResults[0]?.latitude || searchResults[0]?.OnlineEvent?.dateRanges?.[0]?.latitude || 27.717245,
+              //   lng: searchResults[0]?.longitude || searchResults[0]?.OnlineEvent?.dateRanges?.[0]?.longitude || 85.323959,
+              // }}
+              destination={destination || ""}
             />
-          </div>
+  {/* <SearchMap
+    showContinent={false} // if you want to hide continent buttons
+    mapDetails={(data) => {
+      console.log("Selected Location:", data);
+      
+      // Optionally update state here if needed
+    }} */}
+  {/* /> */}
+          {/* </div> */}
           {/* Map E */}
         </div>
       </div>

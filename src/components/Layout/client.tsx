@@ -1,17 +1,17 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { ClientNavbar, Footer } from "..";
-import { useAppDispatch, useAppSelector } from "../../hooks/useTypedSelectors";
-import { RootAppState } from "../../redux/store";
+import { useAppDispatch } from "../../hooks/useTypedSelectors";
+// import { RootAppState } from "../../redux/store";
 import { useEffect } from "react";
-import { getPlaces, getActivePlaces, getLatestPlaces } from "../../redux/actions/places";
-import { getAllEvents, getEventReservations, getUpcomingEvents } from "../../redux/actions/events";
-import { useNavigate } from "react-router-dom";
+import {  getActivePlaces, getLatestPlaces } from "../../redux/actions/places";
+import {  getUpcomingEvents } from "../../redux/actions/events";
+// import { useNavigate } from "react-router-dom";
 
 const ClientLayout = () => {
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
-  const { user } = useAppSelector((state: RootAppState) => state.auth);
-  const navigate = useNavigate();
+  // const { user } = useAppSelector((state: RootAppState) => state.auth);
+  // const navigate = useNavigate();
   
   useEffect(() => {
     dispatch(getActivePlaces());

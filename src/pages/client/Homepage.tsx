@@ -30,7 +30,7 @@ import StaysCard from "../../components/client/shared/Cards/StaysCard";
 // http://localhost:8000/v1/explore/latestplaces,
 // http://localhost:8000/v1/explore/eventsupcoming
 const Homepage = () => {
-  const { places } = useAppSelector((state: RootAppState) => state.places);
+  // const { places } = useAppSelector((state: RootAppState) => state.places);
   // const { events } = useAppSelector((state: RootAppState) => state.events);
   const dispatch = useAppDispatch();
   const { latestPlaces, loadingLatestPlaces } = useAppSelector((state) => state.places);
