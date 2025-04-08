@@ -138,7 +138,7 @@ export default function Router() {
         { path: "events", element: <EventsPage /> },
         { path: "stays", element: <StaysPage /> },
         { path: "events/:id/details", element: <EventsDetailsPage /> },
-        { path: "stays/:id/details", element: <StaysDetailsPage /> },
+        // { path: "stays/:id/details", element: <StaysDetailsPage /> },
         // { path: "stays/:id/rooms", element: <StaysRoomsPage /> },
         { path: "rooms", element: <StaysRoomsPage /> },
 
@@ -191,6 +191,7 @@ export default function Router() {
         //   path: "/stays/:id",
         //   element: <AbhiStays />,
         // },
+         { path: "stays/:id/details", element: <StaysDetailsPage /> },
 
         {
           path: "/:category/details/:id",
