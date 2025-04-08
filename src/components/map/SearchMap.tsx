@@ -43,7 +43,7 @@ const LocationMarker: FC<{
     if (markerDetails) {
       markerDetails(mapUserMarkedLocation);
     }
-  }, [mapUserMarkedLocation]);
+  }, []);
 
   useMapEvent("click", (e) => {
     const { lat, lng } = e.latlng;
@@ -217,7 +217,7 @@ const SearchMap: FC<MapProps> = ({ mapDetails, showContinent = true }) => {
             />
           </div>
         </div>
-        <Map>
+        <Map center={[position.lat, position.lng]}>
           <LocationMarker
             position={position}
             mapUserMarkedLocation={mapMarkedLocation}

@@ -209,7 +209,7 @@ const onSelectEvent: MenuProps["onClick"] = ({ key }) => setSelectEvent(key);
             <Button
               title={selectEvent}
               iconPlacement="right"
-              icon={<MdKeyboardArrowDown className={`text-primary text-xl`} />}
+              icon={<MdKeyboardArrowDown />}
             />
           </Dropdown>
           <Button

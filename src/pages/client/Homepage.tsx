@@ -1,5 +1,6 @@
+
 import {
-  Activities,
+  // Activities,
   ClientContainer,
   Download,
   EventCard,
@@ -23,12 +24,13 @@ import i6 from "../../assets/images/starting_city_6.jpg";
 import { getUpcomingEvents } from "../../redux/actions/events";
 import { getLatestPlaces } from "../../redux/actions/places";
 import { Link } from "react-router-dom";
+import StaysCard from "./cards/StaysCard";
 // import { Link } from "lucide-react";
 // http://localhost:8000/v1/explore/boosted,
 // http://localhost:8000/v1/explore/latestplaces,
 // http://localhost:8000/v1/explore/eventsupcoming
 const Homepage = () => {
-  const { places } = useAppSelector((state: RootAppState) => state.places);
+  // const { places } = useAppSelector((state: RootAppState) => state.places);
   // const { events } = useAppSelector((state: RootAppState) => state.events);
   const dispatch = useAppDispatch();
   const { latestPlaces, loadingLatestPlaces } = useAppSelector((state) => state.places);
@@ -43,16 +45,23 @@ useEffect(() => {
 
   console.log(upcomingEvents,loadingUpcomingEvents,'eeeeeeee')
   return (
-    <>
+    <div className="overflow-hidden">
       <Hero />
-      <Activities data={places} />
-      <Section>
+      {/* <Activities data={places} /> */}
+      <Section className="mt-16" >
         <ClientContainer>
           {/* <h2
             className={`text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight`}
           >
             Featuredssd
           </h2> */}
+
+          {/* Div to display Promoted by dmt section */}
+          <div>
+            {/* <div className="part1 px-[15px]"><span className="text-[44px] font-bold leading-[60px] text-left"> Promoted by DMT.</span></div>
+            <div className="part2"></div> */}
+            <StaysCard />
+          </div>
 
           {/* Div for top desitnations to explore */}
           <div className="my-8">
@@ -213,7 +222,7 @@ useEffect(() => {
 </Section>
 
       </Section>
-    </>
+    </div>
   );
 };
 

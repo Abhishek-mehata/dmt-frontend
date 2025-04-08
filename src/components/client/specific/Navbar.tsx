@@ -326,7 +326,7 @@ const Navbar: FC = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 bottom-0 z-[999] bg-white flex justify-between items-center shadow-md px-4 md:px-8 h-20 border border-b-fade-white">
-      <NavLink to={role === "BUYER" ? "/" : "/app/dashboard"} className="flex items-center gap-2">
+      <NavLink to={role === "BUYER" ? "/" : "/"} className="flex items-center gap-2">
         <img src={Logo.logo_purple} className="w-20 md:w-24" alt="Logo" />
       </NavLink>
 

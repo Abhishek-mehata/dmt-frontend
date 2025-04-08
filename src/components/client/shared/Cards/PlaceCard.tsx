@@ -64,7 +64,7 @@ const PlaceCard: FC<{ data: Place }> = ({ data }) => {
 
   return (
     <NavLink
-      to={`/stays/${id}/details`}
+      to={`/stays/${id}`}
       className="w-full bg-white shadow-lg rounded-lg overflow-hidden smooth hover:scale-105"
     >
       <img
