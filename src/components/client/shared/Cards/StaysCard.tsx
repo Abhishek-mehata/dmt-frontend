@@ -97,7 +97,7 @@ export default function App() {
           </div> */}
 
           <a href="http://localhost:5173/stays/3">
-          
+
             <div
               ref={carouselRef}
               className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide"
@@ -132,13 +132,13 @@ export default function App() {
           <div className="flex mt-8 items-center justify-end gap-10 mb-4 px-36">
             <button
               onClick={() => scroll("left")}
-              className="bg-transparent bg-[#9c59df] rounded-full opacity-70  hover:bg-gray-400  text-white text-[30px] font-extrabold py-1 px-3  cursor-pointer"
+              className=" bg-[#9c59df] rounded-full opacity-70  hover:bg-gray-400  text-white text-[30px] font-extrabold py-1 px-3  cursor-pointer"
             >
               ←
             </button>
             <button
               onClick={() => scroll("right")}
-              className="bg-transparent bg-[#9c59df] rounded-full opacity-70  hover:bg-gray-400  text-white text-[30px] font-extrabold py-1 px-3  cursor-pointer"
+              className=" bg-[#9c59df] rounded-full opacity-70  hover:bg-gray-400  text-white text-[30px] font-extrabold py-1 px-3  cursor-pointer"
             >
               →
             </button>
