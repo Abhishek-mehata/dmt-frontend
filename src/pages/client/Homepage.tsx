@@ -22,11 +22,11 @@ const Homepage = () => {
       {/* <Activities data={places} /> */}
       <Section className="mt-16" >
         <ClientContainer>
-          <h2
+          {/* <h2
             className={`text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight`}
           >
             Featured
-          </h2>
+          </h2> */}
 
            {/* // card for stays details page  */}
           <StaysCard />
