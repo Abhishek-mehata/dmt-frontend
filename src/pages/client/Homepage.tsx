@@ -24,7 +24,7 @@ import i6 from "../../assets/images/starting_city_6.jpg";
 import { getUpcomingEvents } from "../../redux/actions/events";
 import { getLatestPlaces } from "../../redux/actions/places";
 import { Link } from "react-router-dom";
-import StaysCard from "./cards/StaysCard";
+import StaysCard from "../../components/client/shared/Cards/StaysCard";
 // import { Link } from "lucide-react";
 // http://localhost:8000/v1/explore/boosted,
 // http://localhost:8000/v1/explore/latestplaces,

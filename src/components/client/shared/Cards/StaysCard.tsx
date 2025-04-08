@@ -97,7 +97,7 @@ export default function App() {
           </div> */}
 
           <a href="http://localhost:5173/stays/3">
-
+          
             <div
               ref={carouselRef}
               className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide"
