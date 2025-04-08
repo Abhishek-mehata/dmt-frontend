@@ -96,7 +96,7 @@ export default function App() {
             </button>
           </div> */}
 
-          <a href="/events/3">
+          <a href="http://localhost:5173/stays/3">
 
             <div
               ref={carouselRef}

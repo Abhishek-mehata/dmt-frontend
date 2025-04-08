@@ -10,7 +10,6 @@ import {
 } from "../../components";
 import { useAppSelector ,useAppDispatch } from "../../hooks/useTypedSelectors";
 import { RootAppState } from "../../redux/store";
-<<<<<<< HEAD
 // import EventsCard from "./cards/EventCard";
 import TopDestinationsCard from "./cards/TopDestinationsCard";
 import { useEffect } from "react";
@@ -25,14 +24,11 @@ import i6 from "../../assets/images/starting_city_6.jpg";
 import { getUpcomingEvents } from "../../redux/actions/events";
 import { getLatestPlaces } from "../../redux/actions/places";
 import { Link } from "react-router-dom";
+import StaysCard from "./cards/StaysCard";
 // import { Link } from "lucide-react";
 // http://localhost:8000/v1/explore/boosted,
 // http://localhost:8000/v1/explore/latestplaces,
 // http://localhost:8000/v1/explore/eventsupcoming
-=======
-import StaysCard from "../../components/client/shared/Cards/StaysCard";
-
->>>>>>> aman
 const Homepage = () => {
   const { places } = useAppSelector((state: RootAppState) => state.places);
   // const { events } = useAppSelector((state: RootAppState) => state.events);
@@ -57,7 +53,6 @@ useEffect(() => {
           {/* <h2
             className={`text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight`}
           >
-<<<<<<< HEAD
             Featuredssd
           </h2> */}
 
@@ -136,15 +131,6 @@ useEffect(() => {
 </div>
 
           {/* <div
-=======
-            Featured
-          </h2> */}
-
-           {/* // card for stays details page  */}
-          <StaysCard />
-
-          <div
->>>>>>> aman
             className={`grid gap-8 grid-flow-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 mt-10`}
           >
               <h2

@@ -31,7 +31,7 @@ import AddPropertyForm from "../pages/dashboard/Properties/Create/AddProperties"
 import AuthGuard from "../components/guards/AuthGuard";
 
 //stays details page
-import Staysdetails from "../pages/dashboard/Stays/StaysDetails";
+import StaysD from "../pages/dashboard/Stays/StaysDetails";
 
 const Loadable = (Component: any) => (props: any) => {
   return (
@@ -52,13 +52,7 @@ const ConfirmEmailPage = Loadable(ConfirmEmail);
 const LoginPage = Loadable(lazy(() => import("../pages/auth/Loginpage")));
 const RegisterPage = Loadable(lazy(() => import("../pages/auth/RegisterPage")));
 const OtpVerify = Loadable(lazy(() => import("../pages/auth/OtpVerify")));
-<<<<<<< HEAD
 const PasswordResetPage = Loadable(lazy(() => import("../pages/auth/PasswordResetPage")))
-=======
-const PasswordResetPage = Loadable(
-  lazy(() => import("../pages/auth/PasswordResetPage"))
-);
->>>>>>> aman
 // Dashboard pages
 const DashboardPage = Loadable(Dashboard);
 const StaysPage = Loadable(Stays);
@@ -127,25 +121,15 @@ export default function Router() {
             </GuestGuard>
           ),
         },
-<<<<<<< HEAD
-
-=======
->>>>>>> aman
       ],
     },
     {
       path: "app",
       element: (
         <>
-<<<<<<< HEAD
           <AuthGuard>
           <DashboardLayout />
           </AuthGuard>
-=======
-          {/* <AuthGuard> */}
-          <DashboardLayout />
-          {/* </AuthGuard> */}
->>>>>>> aman
         </>
       ),
       children: [
@@ -197,7 +181,6 @@ export default function Router() {
           path: "/search",
           element: <Searchpage />,
         },
-<<<<<<< HEAD
 
         ///Event details
         {
@@ -206,18 +189,11 @@ export default function Router() {
           element: <EventDetails  />,
         },
         ///stays details
-        // {
-        //   path: "/stays/:id",
-        //   element: <AbhiStays />,
-        // },
-
-=======
-        ///stays details
         {
           path: "/stays/:id",
-          element: <Staysdetails/>,
+          element: <StaysD />,
         },
->>>>>>> aman
+
         {
           path: "/:category/details/:id",
           element: <DetailsPage />,
