@@ -11,6 +11,7 @@ import { useAppSelector } from "../../hooks/useTypedSelectors";
 import { RootAppState } from "../../redux/store";
 import EventsCard from "./cards/EventCard";
 import TopDestinationsCard from "./cards/TopDestinationsCard";
+import StaysCard from "./cards/StaysCard";
 // import Filter from "../../components/client/specific/Filter";
 import i1 from "../../assets/images/starting_city_1.jpg";
 import i2 from "../../assets/images/starting_city_2.jpg";
@@ -34,6 +35,13 @@ const Homepage = () => {
           >
             Featuredssd
           </h2> */}
+
+          {/* Div to display Promoted by dmt section */}
+          <div>
+            {/* <div className="part1 px-[15px]"><span className="text-[44px] font-bold leading-[60px] text-left"> Promoted by DMT.</span></div>
+            <div className="part2"></div> */}
+            <StaysCard />
+          </div>
 
           {/* Div for top desitnations to explore */}
           <div className="my-8">
