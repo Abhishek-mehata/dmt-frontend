@@ -8,7 +8,7 @@ import {
   PlaceCard,
   Section,
 } from "../../components";
-import { useAppSelector ,useAppDispatch } from "../../hooks/useTypedSelectors";
+import { useAppSelector, useAppDispatch } from "../../hooks/useTypedSelectors";
 import { RootAppState } from "../../redux/store";
 // import EventsCard from "./cards/EventCard";
 import TopDestinationsCard from "./cards/TopDestinationsCard";
@@ -37,13 +37,13 @@ const Homepage = () => {
   const { upcomingEvents, loadingUpcomingEvents } = useAppSelector(
     (state: RootAppState) => state.events
   );
-useEffect(() => {
-  dispatch(getUpcomingEvents());
-  dispatch(getLatestPlaces());
+  useEffect(() => {
+    dispatch(getUpcomingEvents());
+    dispatch(getLatestPlaces());
 
-}, [dispatch]);
+  }, [dispatch]);
 
-  console.log(upcomingEvents,loadingUpcomingEvents,'eeeeeeee')
+  console.log(upcomingEvents, loadingUpcomingEvents, 'eeeeeeee')
   return (
     <div className="overflow-hidden">
       <Hero />
@@ -73,23 +73,23 @@ useEffect(() => {
                 <TopDestinationsCard />
               </a> */}
               <Link to={`/search?destination=${"NEWYORK".toLowerCase()}`}>
-              <TopDestinationsCard src={i1} cityName={"NEW YORK"} />
+                <TopDestinationsCard src={i1} cityName={"NEW YORK"} />
               </Link>
               <Link to={`/search?destination=${"SYDNEY".toLowerCase()}`}>
 
-              <TopDestinationsCard src={i2} cityName={"SYDNEY"} />
+                <TopDestinationsCard src={i2} cityName={"SYDNEY"} />
               </Link>
               <Link to={`/search?destination=${"PARIS".toLowerCase()}`}>
-              <TopDestinationsCard src={i3} cityName={"PARIS"} />
+                <TopDestinationsCard src={i3} cityName={"PARIS"} />
               </Link>
               <Link to={`/search?destination=${"BARCELONA".toLowerCase()}`}>
-              <TopDestinationsCard src={i4} cityName={"BARCELONA"} />
+                <TopDestinationsCard src={i4} cityName={"BARCELONA"} />
               </Link>
               <Link to={`/search?destination=${"BERLIN".toLowerCase()}`}>
-              <TopDestinationsCard src={i5} cityName={"BERLIN"} />
+                <TopDestinationsCard src={i5} cityName={"BERLIN"} />
               </Link>
               <Link to={`/search?destination=${"BUDAPEST".toLowerCase()}`}>
-              <TopDestinationsCard src={i6} cityName={"BUDAPEST"} />
+                <TopDestinationsCard src={i6} cityName={"BUDAPEST"} />
               </Link>
 
             </div>
@@ -110,25 +110,29 @@ useEffect(() => {
             </div>
 
           </div> */}
-          <div className="mt-10">
-          <h2 className="text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight mb-8">
-          Popular Events
-  </h2>
+          <div className="mt-10 my-8 ">
+            {/* <div className="cards-wrappper bg-red-50 w-[100%] flex flex-wrap gap-3 items-center justify-center py-[15px] px-[10px]"> */}
 
-  {loadingUpcomingEvents ? (
-        <p className="text-center text-gray-500">Loading...</p>
-      ) : upcomingEvents.length === 0 ? (
-    <p className="text-center text-gray-500">No events found.</p>
-  ) : (
-    <div className="grid gap-8 grid-flow-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
-      {upcomingEvents.map((event) => (
-        // <Link to={`/events/${event.id}`} key={event.id}>
-        <EventCard key={event.id} data={event} />
-        // </Link>
-      ))}
-    </div>
-  )}
-</div>
+            <h2 className="text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight mb-8">
+              Popular Events
+            </h2>
+            <div className="mx-[40px]">
+              {loadingUpcomingEvents ? (
+                <p className="text-center text-gray-500">Loading...</p>
+              ) : upcomingEvents.length === 0 ? (
+                <p className="text-center text-gray-500">No events found.</p>
+              ) : (
+                <div className=" grid gap-8 grid-flow-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
+                  {upcomingEvents.map((event) => (
+                    // <Link to={`/events/${event.id}`} key={event.id}>
+                    <EventCard key={event.id} data={event} />
+                    // </Link>
+                  ))}
+                </div>
+              )}
+
+            </div>
+          </div>
 
           {/* <div
             className={`grid gap-8 grid-flow-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 mt-10`}
@@ -142,7 +146,7 @@ useEffect(() => {
               <PlaceCard data={item} key={i} />
             ))}
           </div> */}
-             {/* <div
+          {/* <div
             className={`grid gap-8 grid-flow-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 mt-10`}
           >
               <h2
@@ -152,25 +156,28 @@ useEffect(() => {
             </h2>
               <PlaceCard  />
           </div> */}
-           <div className="mt-10">
-      {/* Heading */}
-      <h2 className="text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight mb-8">
-        Popular Places
-      </h2>
+          <div className="mt-10">
+            {/* Heading */}
+            <h2 className="text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight mb-8">
+              Popular Places
+            </h2>
 
-      {/* Loading state */}
-      {loadingLatestPlaces ? (
-        <p className="text-center text-gray-500">Loading...</p>
-      ) : latestPlaces.length === 0 ? (
-        <p className="text-center text-gray-500">No places found.</p>
-      ) : (
-        <div className="grid gap-8 grid-flow-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
-       {latestPlaces.map((place) => (
-  <PlaceCard key={place.id} data={place} />
-))}
-        </div>
-      )}
-    </div>
+            <div className="mx-[40px]">
+              {/* Loading state */}
+              {loadingLatestPlaces ? (
+                <p className="text-center text-gray-500">Loading...</p>
+              ) : latestPlaces.length === 0 ? (
+                <p className="text-center text-gray-500">No places found.</p>
+              ) : (
+                <div className="grid gap-8 grid-flow-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
+                  {latestPlaces.map((place) => (
+                    <PlaceCard key={place.id} data={place} />
+                  ))}
+                </div>
+              )}
+
+            </div>
+          </div>
         </ClientContainer>
       </Section>
       <Download />
@@ -190,12 +197,12 @@ useEffect(() => {
           </div>
         </ClientContainer> */}
         <Section>
-  <ClientContainer>
-    <h2 className="text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight">
-      Upcoming Events
-    </h2>
+          <ClientContainer>
+            <h2 className="text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight">
+              Upcoming Events
+            </h2>
 
-    {/* {loadingUpcomingEvents ? (
+            {/* {loadingUpcomingEvents ? (
       <p className="text-center text-gray-500 mt-6">Loading upcoming events...</p>
     ) : upcomingEvents?.length === 0 ? (
       <p className="text-center text-gray-500 mt-6">No upcoming events at the moment.</p>
@@ -206,20 +213,24 @@ useEffect(() => {
         ))}
       </div>
     )} */}
-    {loadingUpcomingEvents ? (
-  <p className="text-center text-gray-500 mt-6">Loading upcoming events...</p>
-) : !Array.isArray(upcomingEvents) || upcomingEvents.length === 0 ? (
-  <p className="text-center text-gray-500 mt-6">No upcoming events at the moment.</p>
-) : (
-  <div className="grid gap-8 grid-flow-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 mt-10">
-    {upcomingEvents.map((item, i) => (
-      <EventCard data={item} key={i} />
-    ))}
-  </div>
-)}
 
-  </ClientContainer>
-</Section>
+            <div className="mx-[40px]">
+              {/* Loading state */}
+              {loadingUpcomingEvents ? (
+                <p className="text-center text-gray-500 mt-6">Loading upcoming events...</p>
+              ) : !Array.isArray(upcomingEvents) || upcomingEvents.length === 0 ? (
+                <p className="text-center text-gray-500 mt-6">No upcoming events at the moment.</p>
+              ) : (
+                <div className="grid gap-8 grid-flow-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 mt-10">
+                  {upcomingEvents.map((item, i) => (
+                    <EventCard data={item} key={i} />
+                  ))}
+                </div>
+              )}
+
+            </div>
+          </ClientContainer>
+        </Section>
 
       </Section>
     </div>

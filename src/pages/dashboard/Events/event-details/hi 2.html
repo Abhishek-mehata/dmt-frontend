@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="c.css"> -->
+    <style>
+        body {
+            font-family: serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f4f4f4;
+        }
+
+        .container {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            overflow: hidden;
+        }
+
+        .img-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+            /* transform: translateX(600px); */
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+        }
+
+        .btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="img-wrapper">
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20241228102812942963/0_ilw552fVUGbwIzbE.jpg"
+                alt="1">
+
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20241128161121752603/what-is-javascript.webp"
+                alt="2">
+
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240829155421/Amazing-new-Javascript-features-in-ES15.webp"
+                alt="3">
+
+        </div>
+
+        <button class="btn prev">＜</button>
+        <button class="btn next">＞</button>
+    </div>
+
+    <!-- <script differ src="c.js"></script> -->
+    <script>
+        const prev = document.querySelector('.prev');
+        const next = document.querySelector('.next');
+        const wrapper = document.querySelector('.img-wrapper');
+        const imgs = document.querySelectorAll('.img-wrapper img');
+        console.log(imgs.length)
+        let idx = 0;
+
+        function showImg() {
+            if (idx >= imgs.length) idx = 0;
+            if (idx < 0) idx = imgs.length - 1;
+            wrapper.style.transform = `translateX(-${idx * 100}%)`;
+        }
+
+        next.addEventListener('click', () => {
+            idx++;
+            showImg();
+        });
+
+        prev.addEventListener('click', () => {
+            idx--;
+            showImg();
+        });
+
+        setInterval(() => {
+            idx++;
+            showImg();
+        }, 3000);
+
+        showImg();
+
+    </script>
+</body>
+
+</html>
