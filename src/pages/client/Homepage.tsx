@@ -54,6 +54,13 @@ useEffect(() => {
             Featuredssd
           </h2> */}
 
+          {/* Div to display Promoted by dmt section */}
+          <div>
+            {/* <div className="part1 px-[15px]"><span className="text-[44px] font-bold leading-[60px] text-left"> Promoted by DMT.</span></div>
+            <div className="part2"></div> */}
+            <StaysCard />
+          </div>
+
           {/* Div for top desitnations to explore */}
           <div className="my-8">
             <h2 className={`text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight`}>Top Destination to Explore</h2>
