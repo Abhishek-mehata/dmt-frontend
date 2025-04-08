@@ -235,7 +235,8 @@ import AddPropertyForm from "../pages/dashboard/Properties/Create/AddProperties"
 import AuthGuard from "../components/guards/AuthGuard";
 
 //stays details page
-import StaysD from "../pages/dashboard/Stays/StaysDetails";
+// import StaysD from "../pages/dashboard/Stays/StaysDetails";
+import StaysD from "../pages/dashboard/Stays/StaysDetails"
 
 const Loadable = (Component: any) => (props: any) => {
   return (

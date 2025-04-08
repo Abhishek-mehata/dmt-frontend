@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import stayscardImage from "./stays-card-image.jpg"
 import "./index.css"
 const stays = [
@@ -81,20 +81,20 @@ export default function App() {
 
         {/* Carousel */}
         <div className="relative md:w-3/4">
-          <div className="flex items-center justify-around mb-4">
+          {/* <div className="flex items-center justify-around mb-4">
             <button
               onClick={() => scroll("left")}
-              className="bg-transparent opacity-70  hover:bg-gray-400 text-[#9c59df] text-[30px] font-extrabold py-1 px-3 rounded-full cursor-pointer"
+              className="bg-transparent bg-[#9c59df] rounded-full opacity-70  hover:bg-gray-400  text-white text-[30px] font-extrabold py-1 px-3  cursor-pointer"
             >
               ←
             </button>
             <button
               onClick={() => scroll("right")}
-              className="bg-transparent opacity-70  hover:bg-gray-400 text-[#9c59df] text-[30px] font-extrabold py-1 px-3 rounded-full cursor-pointer"
+              className="bg-transparent bg-[#9c59df] rounded-full opacity-70  hover:bg-gray-400  text-white text-[30px] font-extrabold py-1 px-3  cursor-pointer"
             >
               →
             </button>
-          </div>
+          </div> */}
 
           <a href="/events/3">
 
@@ -127,8 +127,22 @@ export default function App() {
                 </div>
               ))}
             </div>
-
           </a>
+
+          <div className="flex mt-8 items-center justify-end gap-10 mb-4 px-36">
+            <button
+              onClick={() => scroll("left")}
+              className="bg-transparent bg-[#9c59df] rounded-full opacity-70  hover:bg-gray-400  text-white text-[30px] font-extrabold py-1 px-3  cursor-pointer"
+            >
+              ←
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              className="bg-transparent bg-[#9c59df] rounded-full opacity-70  hover:bg-gray-400  text-white text-[30px] font-extrabold py-1 px-3  cursor-pointer"
+            >
+              →
+            </button>
+          </div>
         </div>
       </div>
     </div>
