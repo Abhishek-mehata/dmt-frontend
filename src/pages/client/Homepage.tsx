@@ -1,5 +1,6 @@
+
 import {
-  Activities,
+  // Activities,
   ClientContainer,
   Download,
   EventCard,
@@ -9,6 +10,7 @@ import {
 } from "../../components";
 import { useAppSelector ,useAppDispatch } from "../../hooks/useTypedSelectors";
 import { RootAppState } from "../../redux/store";
+<<<<<<< HEAD
 // import EventsCard from "./cards/EventCard";
 import TopDestinationsCard from "./cards/TopDestinationsCard";
 import { useEffect } from "react";
@@ -27,6 +29,10 @@ import { Link } from "react-router-dom";
 // http://localhost:8000/v1/explore/boosted,
 // http://localhost:8000/v1/explore/latestplaces,
 // http://localhost:8000/v1/explore/eventsupcoming
+=======
+import StaysCard from "../../components/client/shared/Cards/StaysCard";
+
+>>>>>>> aman
 const Homepage = () => {
   const { places } = useAppSelector((state: RootAppState) => state.places);
   // const { events } = useAppSelector((state: RootAppState) => state.events);
@@ -43,14 +49,15 @@ useEffect(() => {
 
   console.log(upcomingEvents,loadingUpcomingEvents,'eeeeeeee')
   return (
-    <>
+    <div className="overflow-hidden">
       <Hero />
-      <Activities data={places} />
-      <Section>
+      {/* <Activities data={places} /> */}
+      <Section className="mt-16" >
         <ClientContainer>
           {/* <h2
             className={`text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight`}
           >
+<<<<<<< HEAD
             Featuredssd
           </h2> */}
 
@@ -129,6 +136,15 @@ useEffect(() => {
 </div>
 
           {/* <div
+=======
+            Featured
+          </h2> */}
+
+           {/* // card for stays details page  */}
+          <StaysCard />
+
+          <div
+>>>>>>> aman
             className={`grid gap-8 grid-flow-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 mt-10`}
           >
               <h2
@@ -220,7 +236,7 @@ useEffect(() => {
 </Section>
 
       </Section>
-    </>
+    </div>
   );
 };
 
