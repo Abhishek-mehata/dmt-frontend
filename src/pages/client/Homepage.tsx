@@ -22,6 +22,7 @@ import i5 from "../../assets/images/starting_city_5.jpg";
 import i6 from "../../assets/images/starting_city_6.jpg";
 import { getUpcomingEvents } from "../../redux/actions/events";
 import { getLatestPlaces } from "../../redux/actions/places";
+import { Link } from "react-router-dom";
 // import { Link } from "lucide-react";
 // http://localhost:8000/v1/explore/boosted,
 // http://localhost:8000/v1/explore/latestplaces,
@@ -62,12 +63,25 @@ useEffect(() => {
               <a href="components/client/specific/Filter">
                 <TopDestinationsCard />
               </a> */}
+              <Link to={`/search?destination=${"NEWYORK".toLowerCase()}`}>
               <TopDestinationsCard src={i1} cityName={"NEW YORK"} />
+              </Link>
+              <Link to={`/search?destination=${"SYDNEY".toLowerCase()}`}>
+
               <TopDestinationsCard src={i2} cityName={"SYDNEY"} />
+              </Link>
+              <Link to={`/search?destination=${"PARIS".toLowerCase()}`}>
               <TopDestinationsCard src={i3} cityName={"PARIS"} />
+              </Link>
+              <Link to={`/search?destination=${"BARCELONA".toLowerCase()}`}>
               <TopDestinationsCard src={i4} cityName={"BARCELONA"} />
+              </Link>
+              <Link to={`/search?destination=${"BERLIN".toLowerCase()}`}>
               <TopDestinationsCard src={i5} cityName={"BERLIN"} />
+              </Link>
+              <Link to={`/search?destination=${"BUDAPEST".toLowerCase()}`}>
               <TopDestinationsCard src={i6} cityName={"BUDAPEST"} />
+              </Link>
 
             </div>
           </div>
