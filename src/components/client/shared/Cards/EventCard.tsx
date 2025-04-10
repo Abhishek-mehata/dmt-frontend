@@ -11,7 +11,7 @@ const EventCard: FC<{ data: EventModel }> = ({ data }) => {
   return (
     <NavLink
       to={`/events/${id}`}
-      className={`w-full bg-white shadow-lg rounded-lg overflow-hidden smooth hover:scale-105`}
+      className={`w-[270px] bg-white shadow-lg rounded-lg overflow-hidden smooth hover:scale-105`}
     >
       {/* <img
         src={`${ImageAPI}/${files[0].file_key}`}
@@ -31,29 +31,42 @@ const EventCard: FC<{ data: EventModel }> = ({ data }) => {
 )}
       <div className={`flex flex-col gap-2 pt-6 p-4`}>
         <div className={`flex items-center justify-between`}>
-          <h2 className={`text-black text-lg capitalize`}>{name}</h2>
+          <h2
+          //  className={`text-black text-lg capitalize`}
+           className={`truncate text-[17px] text-[#172b4d] font-semibold`}
+          >{name}</h2>
           <span
-            className={`text-white text-xs font-semibold capitalize py-2 px-3 rounded bg-primary w-fit`}
+            // className={`text-white text-xs font-semibold capitalize py-2 px-3 rounded bg-primary w-fit`}
+            className={`text-[#9c59df] text-[16px] font-semibold mt-[3px]`}
           >
             {eventType}
           </span>
         </div>
-        <span className={`text-dark-gray mt-2 text-md h-10`}>{location}</span>
-        <div className={`flex justify-between mt-2.5 w-full`}>
+        <span 
+        // className={`text-dark-gray mt-2 text-md h-10`}
+        className={`mb-0 text-[16px] text-[#8b9199] break-words leading-6 font-normal overflow-hidden custom-clamp`}
+        >{location}</span>
+
+        <div className={`flex justify-start gap-4 items-center mt-2.5 w-full`}>
           <p className={`text-sm font-medium text-dark-gray`}>
             {`Category: ${category}`}
+            {/* {`Category(${category})`} */}
           </p>
-          <span className={`text-center text-dark-blue text-lg font-medium`}>
+          <span 
+          // className={`text-center text-dark-blue text-lg font-medium`}
+          className={`truncate text-[17px] text-[#172b4d] font-semibold`}
+          >
             {`$${price}`}
           </span>
         </div>
-        <div className={`flex justify-between w-full`}>
+
+        <div className={` w-full flex items-center justify-between`}>
           <p
-            className={`text-sm font-medium text-dark-gray capitalize`}
+            className={`text-ellipsis text-[13px] font-medium text-dark-gray capitalize`}
           >{`Language: ${language}`}</p>
-          <span className={`text-center text-dark-blue text-lg font-medium`}>
+          <span className={`text-ellipsis text-dark-blue text-[16px] font-semibold`}>
             {`$${price}`}
-            <span className={`text-base`}>{`/night`}</span>
+            <span className={`text-[12px]`}>{`/night`}</span>
           </span>
         </div>
       </div>

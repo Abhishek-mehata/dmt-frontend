@@ -10,7 +10,7 @@ import {
 } from "../../components";
 import { useAppSelector, useAppDispatch } from "../../hooks/useTypedSelectors";
 import { RootAppState } from "../../redux/store";
-// import EventsCard from "./cards/EventCard";
+import EventsCard from "./cards/EventCard";
 import TopDestinationsCard from "./cards/TopDestinationsCard";
 import { useEffect } from "react";
 // import { useDispatch } from "react-redux";
@@ -110,13 +110,14 @@ const Homepage = () => {
             </div>
 
           </div> */}
-          <div className="mt-10 my-8 ">
+
+          <div className="w-full mx-auto flex justify-center flex-wrap ">
             {/* <div className="cards-wrappper bg-red-50 w-[100%] flex flex-wrap gap-3 items-center justify-center py-[15px] px-[10px]"> */}
 
             <h2 className="text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight mb-8">
               Popular Events
             </h2>
-            <div className="mx-[40px]">
+            <div className=" w-[100%] mx-auto flex justify-center flex-wrap">
               {loadingUpcomingEvents ? (
                 <p className="text-center text-gray-500">Loading...</p>
               ) : upcomingEvents.length === 0 ? (
@@ -133,6 +134,7 @@ const Homepage = () => {
 
             </div>
           </div>
+
 
           {/* <div
             className={`grid gap-8 grid-flow-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 mt-10`}
@@ -156,13 +158,13 @@ const Homepage = () => {
             </h2>
               <PlaceCard  />
           </div> */}
-          <div className="mt-10">
+          <div className="mt-8 w-full mx-auto flex justify-center gap-2 flex-col items-center flex-wrap">
             {/* Heading */}
             <h2 className="text-center text-dark-blue text-3xl md:text-5xl font-bold leading-tight mb-8">
               Popular Places
             </h2>
 
-            <div className="mx-[40px]">
+            <div className="">
               {/* Loading state */}
               {loadingLatestPlaces ? (
                 <p className="text-center text-gray-500">Loading...</p>
@@ -214,7 +216,7 @@ const Homepage = () => {
       </div>
     )} */}
 
-            <div className="mx-[40px]">
+            <div className="mt-4 w-full mx-auto flex justify-center flex-wrap">
               {/* Loading state */}
               {loadingUpcomingEvents ? (
                 <p className="text-center text-gray-500 mt-6">Loading upcoming events...</p>

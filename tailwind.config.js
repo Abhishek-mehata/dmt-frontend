@@ -20,13 +20,17 @@ export default {
         danger: "#E2445C",
       },
       screens: {
-        'xsss': '370px',
-        'xss': '450px',
+        'xss': '300px',
+        'sms': '380px',   // Small devices (default)
+        'mds': '445px',   // Medium devices (default)
         'xs': '480px',   // Extra small devices
+        'mds2': '520px',   // Medium devices (default)
         'sm': '640px',   // Small devices (default)
-        'md': '796px',   // Medium devices (default)
-        'sc': '992px',
+        'smm': '768px',   // Small devices (default)
+        'md': '786px',   // Medium devices (default)
+        'scs': '850px',
         'scc':"900px",
+        'sc': '970px',
         'lg': '1024px',  // Large devices (default)
         'xl': '1280px',  // Extra large devices (default)
         '2xl': '1536px', // 2x large devices (default)
