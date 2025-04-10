@@ -10,7 +10,7 @@ import {
 } from "../../components";
 import { useAppSelector, useAppDispatch } from "../../hooks/useTypedSelectors";
 import { RootAppState } from "../../redux/store";
-import EventsCard from "./cards/EventCard";
+// import EventsCard from "./cards/EventCard";
 import TopDestinationsCard from "./cards/TopDestinationsCard";
 import { useEffect } from "react";
 // import { useDispatch } from "react-redux";
