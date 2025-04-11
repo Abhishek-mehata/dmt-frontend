@@ -65,17 +65,24 @@ const PlaceCard: FC<{ data: Place }> = ({ data }) => {
   return (
     <NavLink
       to={`/stays/${id}`}
-      className="w-full bg-white shadow-lg rounded-lg overflow-hidden smooth hover:scale-105 "
+      className="w-full bg-white shadow-lg rounded-lg overflow-hidden smooth hover:scale-105"
     >
       <img
         src={imageUrl}
         alt={cover_image?.original_name || "Place cover image"}
-        className="max-h-[200px] w-full object-cover"
+        className="h-[150px] max-h-[200px] w-full object-cover"
       />
-      <div className="flex flex-col gap-1 pt-6 p-4">
-        <h2 className="text-primary text-xl font-semibold">{subtitle}</h2>
-        <span className="text-black text-lg">{title}</span>
-        <div className="flex justify-between mt-2.5 w-full">
+      <div className="flex flex-col gap-1 h-[180px] max-h-[200px] pt-6 p-4">
+        <span 
+        // className="text-black text-lg"
+        className="truncate text-[20px] text-primary font-semibold"
+        >Title{title}</span>
+        <h2 
+        // className="text-primary text-xl font-semibold"
+        className="mb-0 text-[17px] text-[#8b9199] break-words leading-6 font-[500] overflow-hidden custom-clamp"
+        >{subtitle}</h2>
+
+        <div className="flex justify-between items-center mt-2.5 w-full">
           <div className="flex items-center">
             <img src={Svg.star} alt="star icon" />
             <p className="mx-2 text-sm font-medium text-dark-gray">
