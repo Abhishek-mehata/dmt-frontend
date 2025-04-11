@@ -73,7 +73,7 @@ export default function App() {
         {/* Left Label */}
         <div className="md:w-1/4 flex justify-center items-center">
           <h2 className="text-2xl font-bold text-center align-middle md:mt-[250px]">
-            <span className="bg-none text-center px-2 py-1 inline-block">
+            <span className="bg-none text-center text-5xl py-1 inline-block">
               Promoted By<br />DMT.
             </span>
           </h2>

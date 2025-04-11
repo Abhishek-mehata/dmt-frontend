@@ -137,7 +137,7 @@ import { useNavigate } from "react-router";
 // import { useAppSelector } from "../../../hooks/useTypedSelectors";
 // import { RootAppState } from "../../../redux/store";
 import axios from "axios";
-import debounce from "lodash.debounce";
+// import debounce from "lodash.debounce";
 
 const { RangePicker } = DatePicker;
 
@@ -234,11 +234,11 @@ const Filter = () => {
   };
   
   // Use debounce to avoid excessive API calls on each keystroke
-  const debouncedFetch = useMemo(() => debounce(fetchLocationSuggestions, 500), []);
+  // const debouncedFetch = useMemo(() => debounce(fetchLocationSuggestions, 500), []);
 
   return (
     <div
-      className={`absolute bottom-0 left-[50%] translate-x-[-50%] translate-y-[50%] w-full max-w-[1100px] grid grid-cols-4 mt-8 bg-[#f4f4f4] rounded-sm overflow-hidden p-10 shadow-[0px_4px_12px_rgba(0,0,0,0.08)]`}
+      className={`absolute -bottom-8 md:bottom-0 left-[50%] translate-x-[-50%] translate-y-[50%] w-full max-w-[1100px] grid grid-cols-4 mt-8 bg-[#f4f4f4] rounded-sm overflow-hidden p-10 shadow-[0px_4px_12px_rgba(0,0,0,0.08)]`}
     >
       <div
         className={`flex gap-1 justify-start items-center cursor-pointer p-2 px-3 border border-primary rounded-tl-md rounded-bl-md bg-white`}
@@ -282,7 +282,7 @@ const Filter = () => {
           style={{ width: `100%` }}
           options={destinationOptions} // Use the state for destination options
           placeholder="Destination"
-          onSearch={debouncedFetch} // Trigger location suggestions on search
+          // onSearch={debouncedFetch} // Trigger location suggestions on search
           onChange={(value: string) => setSelectDestination(value)}
           filterOption={(inputValue, option) =>
             option!.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1

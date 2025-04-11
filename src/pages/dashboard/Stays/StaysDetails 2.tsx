@@ -204,34 +204,34 @@ const StaysDetails = () => {
   };
 
   return (
-    <>
+    <div className="rlative">
       {/* -----the sticky divs----- */}
 
-      <div className=" lg:h-[135rem] h-[165rem] w-full md:px-16 absolute top-36 left-5 md:top-[1020px] lg:top-[600px] flex justify-between mt-6 ">
+      <div className=" h-[90%] w-full md:px-16 absolute top-36 left-5 md:top-[1020px] lg:top-[600px] flex justify-between mt-6 ">
         {/*sticky nav bar*/}
         <div className=" bg-white place-content-center  md:pl-20 lg:w-[68%] md:w-[95%] border-zinc-300 w-[91%] sticky top-[60px]  z-50  md:h-[102px] h-[93px] border-b border-t ">
           <div className="font-semibold text-sm flex gap-2 transition-all md:gap-8 md:text-xl  ">
             <a
               href="#description"
-              className="hover:text-[#9427F7] border-[0.2px] border-zinc-300 l shadow-md shadow-[#bab9c6]  p-2 rounded-xl "
+              className="hover:text-[#9427F7]  p-2 rounded-xl "
             >
               Details
             </a>
             <a
               href="#rooms"
-              className="hover:text-[#9427F7] border-[0.2px] border-zinc-300 l shadow-md shadow-[#bab9c6]  p-2 rounded-xl"
+              className="hover:text-[#9427F7]  p-2 rounded-xl"
             >
               Room
             </a>
             <a
               href="#info"
-              className="hover:text-[#9427F7] border-[0.2px] border-zinc-300 l shadow-md shadow-[#bab9c6]  p-2 rounded-xl"
+              className="hover:text-[#9427F7]  p-2 rounded-xl"
             >
               Info
             </a>
             <a
               href="#reviews"
-              className="hover:text-[#9427F7] border-[0.2px] border-zinc-300 l shadow-md shadow-[#bab9c6]  p-2 rounded-xl"
+              className="hover:text-[#9427F7]  p-2 rounded-xl"
             >
               Reviews
             </a>
@@ -690,7 +690,7 @@ const StaysDetails = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

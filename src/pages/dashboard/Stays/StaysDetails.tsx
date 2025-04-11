@@ -23,6 +23,9 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { MdOutlineAccessTime } from "react-icons/md";
+import "../../../index.css";
+import { RxCross2 } from "react-icons/rx";
+
 import api from "../../../api";
 import { useParams } from "react-router-dom";
 
@@ -75,18 +78,19 @@ const StaysDetails = () => {
     },
     {
       title: "Important information",
-      description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur esse enim, quo illo optio veritatis facilis accusamus. Tempore iusto odio sequi quidem natus aspernatur laboriosam aut itaque minima enim. Magnam repellat esse accusantium mollitia sunt qui illo iure excepturi? Dicta animi sequi, praesentium et nemo beatae qui obcaecati eos. Magni sapiente repudiandae, fugiat eligendi neque animi molestiae provident? Animi dolores ut mollitia distinctio est perspiciatis. ",
+      description:
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur esse enim, quo illo optio veritatis facilis accusamus. Tempore iusto odio sequi quidem natus aspernatur laboriosam aut itaque minima enim. Magnam repellat esse accusantium mollitia sunt qui illo iure excepturi? Dicta animi sequi, praesentium et nemo beatae qui obcaecati eos. Magni sapiente repudiandae, fugiat eligendi neque animi molestiae provident? Animi dolores ut mollitia distinctio est perspiciatis. ",
       icons: [],
     },
   ];
-  
+
   const amenities = [
     {
-      icon: "" ,
+      icon: "",
       title: "Internet",
     },
     {
-      icon: <BiDumbbell /> ,
+      icon: <BiDumbbell />,
       title: "Gym",
     },
     {
@@ -94,7 +98,7 @@ const StaysDetails = () => {
       title: "Elevator in Building",
     },
     {
-      icon:     <MdOutlineFireplace />,
+      icon: <MdOutlineFireplace />,
       title: "    Indoor Fireplace",
     },
     {
@@ -110,7 +114,7 @@ const StaysDetails = () => {
       title: "  Shampoo",
     },
     {
-      icon:   <IoIosWifi />,
+      icon: <IoIosWifi />,
       title: "Wireless Internet",
     },
     {
@@ -134,11 +138,11 @@ const StaysDetails = () => {
       title: " Breakfast",
     },
     {
-      icon:  <RiParkingBoxLine /> ,
+      icon: <RiParkingBoxLine />,
       title: "  Free Parking on Premises",
     },
     {
-      icon: <MdOutlineFamilyRestroom /> ,
+      icon: <MdOutlineFamilyRestroom />,
       title: " Family/Kid Friendly",
     },
     {
@@ -146,11 +150,11 @@ const StaysDetails = () => {
       title: "Smoking Allowed",
     },
     {
-      icon:   <BsBalloonFill />,
+      icon: <BsBalloonFill />,
       title: "  Suitable for Events",
     },
     {
-      icon:  <MdPets /> ,
+      icon: <MdPets />,
       title: "  Pets Allowed",
     },
     {
@@ -158,53 +162,195 @@ const StaysDetails = () => {
       title: "Pets live on this property",
     },
     {
-      icon: <BiHandicap /> ,
+      icon: <BiHandicap />,
       title: " Wheelchair Accessible",
     },
     {
-      icon:  <FaRegCircleCheck /> ,
+      icon: <FaRegCircleCheck />,
       title: "  Smoke Detector",
     },
     {
-      icon:  <FaRegCircleCheck /> ,
+      icon: <FaRegCircleCheck />,
       title: "Carbon Monoxide Detector",
     },
     {
-      icon:  <FaRegCircleCheck /> ,
+      icon: <FaRegCircleCheck />,
       title: " First Aid Kit",
     },
     {
-      icon:  <FaRegCircleCheck /> ,
+      icon: <FaRegCircleCheck />,
       title: " Safety Card",
     },
     {
-      icon:  <FaRegCircleCheck /> ,
+      icon: <FaRegCircleCheck />,
       title: "Fire Extinguisher",
     },
-
   ];
+
+  const more = [
+    {
+      title: "Property type",
+      content: "Property type: Apartment",
+    },
+    {
+      content: "Bathrooms: 1",
+    },
+    {
+      content: "Bedrooms: ",
+    },
+    {
+      content: "Accommodates: 8",
+    },
+    {
+      content: "Beds: 1",
+    },
+  ];
+
 
   const { id } = useParams(); // fetch ID from URL
 
   const [count, setCount] = useState(true);
   const ref = useRef<HTMLInputElement>(null);
   const ref2 = useRef<HTMLInputElement>(null);
-  
+
   const StickyDivChange = () => {
-    if (count === true) {
-      return ref2.current?.classList.add("lg:block");
-    } else if (count === false) {
-      return ref2.current?.classList.remove("lg:block");
+    {
+      count
+        ? ref2.current?.classList.add("lg:block")
+        : ref2.current?.classList.remove("lg:block");
     }
   };
 
   const StickyDivChange2 = () => {
-    if (!count === true) {
-      return ref.current?.classList.add("lg:block");
-    } else if (!count === false) {
-      return ref.current?.classList.remove("lg:block");
+    {
+      !count
+        ? ref.current?.classList.add("lg:block")
+        : ref.current?.classList.remove("lg:block");
     }
   };
+
+  const [moredetails, setMoredetails] = useState(true);
+  const [showMore, setShowMore] = useState(true);
+  const showMoreTog = useRef<HTMLInputElement>(null);
+
+  const toggleShowMore = () => {
+    setShowMore(!showMore);
+    {
+      showMore
+        ? showMoreTog.current?.classList.remove("h-[170px]")
+        : showMoreTog.current?.classList.add("h-[170px]");
+    }
+    {
+      showMore
+        ? showMoreTog.current?.classList.remove("md:h-[100px]")
+        : showMoreTog.current?.classList.add("md:h-[100px]");
+    }
+  };
+
+    
+    const MoredetailsButton = () => {
+      if (moredetails === false) {
+        return (
+        <div className=" fixed flex flex-col justify-center items-center top-0 left-0 w-full h-full bg-[#00000042] z-[9999]">
+        <div className=" scroll [&>h1]:text-xl scroll-smooth overflow-x-hidden  md:w-[800px] w-[98%] h-[90%] max:md:w-[98%] fixed  rounded-3xl p-8 border border-[#9427F7] bg-white shadow-md shadow-[#bab9c6]">
+          
+          <div className=" w-full flex flex-col items-end justify-end " >
+          <button
+            onClick={() => {
+              setMoredetails(!moredetails);
+            }}
+            className="p-1 text-white font-bold text-xl rounded fixed z-[99999] bg-[#9427F7] -mr-8 opacity-80 "
+          >
+            <RxCross2 />
+          </button>
+            </div>
+            
+          <header className="h-[220px] mb-24 ">
+            <img
+              src="https://dmttourism.com/images/property/13/1740383146_promoted1.jpeg"
+              className="object-cover h-full w-full rounded-md "
+              alt=""
+            />
+            <h1 className="mt-5 text-xl font-semibold md:text-3xl ">
+              About this listing
+            </h1>
+          </header>
+
+          <body className=" overflow-hidden h-fit -mt-6 md:-mt-0 w-[98%] ">
+            <div className="border-b border-zinc-300 pb-4 md:flex md:items-end md:gap-[130px]">
+              <h1 className="text-xl mb-4 font-semibold ">The Spaces</h1>
+              <div className="md:columns-2">
+                {more.map((items, i) => (
+                  <p className="pr-[50px]" key={i}>{items.content}</p>
+                ))}
+              </div>
+            </div>
+
+            <div className=" relative overflow-hidden pt-4 border-b border-zinc-300 pb-4 md:pb-16 md:flex md:items-center md:gap-[143px]">
+              <h1 className="text-xl font-semibold ">Amenities</h1>
+              <div
+                ref={showMoreTog}
+                className=" h-[170px] md:h-[100px] overflow-hidden md:columns-2"
+              >
+                {amenities.map((items, i) => (
+                  <div
+                    key={i}
+                    className="flex gap-2 text-[17px] opacity-60 items-center mt-3  "
+                  >
+                    <p className="text-xl">{items.icon}</p>
+                    <h1>{items.title}</h1>
+                  </div>
+                ))}
+                  </div>
+              <button
+                onClick={() => {
+                  toggleShowMore();
+                }}
+                className="text-xl md:absolute md:bottom-2 md:left-[510px] font-semibold text-white bg-[#9327f7de] p-2 rounded-md mt-4 mx-1 "
+                >
+                {showMore ? "+ More" : " Show Less"}
+              </button>
+            </div>
+
+            <div className="border-b border-zinc-300 pb-4 md:py-3 md:flex md:items-center md:gap-[185px]">
+              <h1 className="text-xl mt-5 mb-4 font-semibold ">Prices</h1>
+              <div className=" " >
+              <p>
+                {" "}
+                Extra people:<span className="opacity-80"> No Charge</span>
+              </p>
+              <p>
+                Weekly discount (%) :
+                <span className="opacity-80">NPR 0 /week</span>
+              </p>
+              <p>
+                {" "}
+                Monthly discount
+                <span className="opacity-80">NPR 0 /month</span>
+              </p>
+              </div>
+            </div>
+            <div className="border-b border-zinc-300 pb-4 md:py-3 md:flex md:items-center md:gap-24">
+              <h1 className="text-xl mt-5 mb-4 font-semibold ">
+                Safety Features
+              </h1>
+              <div className="md:columns-2"> 
+              {amenities.map((items, i) => (
+                <div className="" >
+                <p key={i} className="mr-12">
+                  {items.title}
+                </p>
+                </div>
+              ))}
+              </div>
+            </div>
+          </body>
+        </div>
+        </div>
+      );
+    }
+  };
+
   interface PlaceDetails {
     title?: string;
     description?: string;
@@ -290,54 +436,42 @@ const StaysDetails = () => {
       images: string[];
     }[];
   }
-  
-const [placeDetails, setPlaceDetails] = useState<PlaceDetails>({});
-  
+
+  const [placeDetails, setPlaceDetails] = useState<PlaceDetails>({});
+
   const fetchPlaceDetails = async () => {
     try {
-    const res = await api.get(`/explore/place/${id}`);
-    setPlaceDetails(res.data); // Axios puts the data inside res.data
+      const res = await api.get(`/explore/place/${id}`);
+      setPlaceDetails(res.data); // Axios puts the data inside res.data
     } catch (error) {
-    console.error("Error fetching event:", error);
+      console.error("Error fetching event:", error);
     }
-};
-console.log(placeDetails, "placeDetails")
-useEffect(() => {
+  };
+  console.log(placeDetails, "placeDetails");
+  useEffect(() => {
     if (id) {
       fetchPlaceDetails();
     }
-}, [ id]);
+  }, [id]);
 
   return (
-    <>
+    <div className="relative">
       {/* -----the sticky divs----- */}
 
-      <div className=" lg:h-[135rem] h-[165rem] w-full md:px-16 absolute top-36 left-5 md:top-[1020px] lg:top-[600px] flex justify-between mt-6 ">
+      <div className=" h-[90%] w-full md:px-16 absolute top-[500px] left-5 md:top-[500px]  flex justify-between mt-6 ">
         {/*sticky nav bar*/}
-        <div className=" bg-white place-content-center  md:pl-20 lg:w-[68%] md:w-[95%] border-zinc-300 w-[91%] sticky top-[60px]  z-50  md:h-[102px] h-[93px] border-b border-t ">
-          <div className="font-semibold text-sm flex gap-2 transition-all md:gap-8 md:text-xl  ">
-            <a
-              href="#description"
-              className="hover:text-[#9427F7] border-[0.2px] border-zinc-300 l shadow-md shadow-[#bab9c6]  p-2 rounded-xl "
-            >
+        <div className=" bg-white place-content-center  md:pl-20 lg:w-[68%] md:w-[95%] border-zinc-300 w-[91%] sticky top-[75px]  z-50  md:h-[90px] h-[93px] border-b border-t ">
+          <div className="font-semibold text-sm flex gap-4 transition-all md:gap-8 md:text-xl  ">
+            <a href="#description" className="hover:text-[#9427F7]  ">
               Details
             </a>
-            <a
-              href="#rooms"
-              className="hover:text-[#9427F7] border-[0.2px] border-zinc-300 l shadow-md shadow-[#bab9c6]  p-2 rounded-xl"
-            >
+            <a href="#rooms" className="hover:text-[#9427F7] ">
               Room
             </a>
-            <a
-              href="#info"
-              className="hover:text-[#9427F7] border-[0.2px] border-zinc-300 l shadow-md shadow-[#bab9c6]  p-2 rounded-xl"
-            >
+            <a href="#info" className="hover:text-[#9427F7] ">
               Info
             </a>
-            <a
-              href="#reviews"
-              className="hover:text-[#9427F7] border-[0.2px] border-zinc-300 l shadow-md shadow-[#bab9c6]  p-2 rounded-xl"
-            >
+            <a href="#reviews" className="hover:text-[#9427F7] ">
               Reviews
             </a>
           </div>
@@ -418,12 +552,14 @@ useEffect(() => {
             {/* share button div */}
             <div className="flex justify-between lg:mx-20 ">
               <div>
-                <h1 className="text-xl font-semibold md:text-2xl ">{placeDetails?.title||"villa"}</h1>
+                <h1 className="text-xl font-semibold md:text-2xl ">
+                  {placeDetails?.title || "villa"}
+                </h1>
                 <p className="flex py-1 opacity-60 text-sm ">
                   <i className="text-[#9427F7]">
                     <FaLocationDot />
                   </i>
-                  {placeDetails?.street||"विराटनगर"}
+                  {placeDetails?.street || "विराटनगर"}
                 </p>
               </div>
 
@@ -500,7 +636,7 @@ useEffect(() => {
                 </div>
               </div>
             </div> */}
-   {/* {placeDetails?.images && placeDetails.images.length >= 0 && (
+            {/* {placeDetails?.images && placeDetails.images.length >= 0 && (
   <div className="hidden md:block lg:flex lg:gap-10 xl: lg:justify-center lg:items-center lg:px-2">
     <div className="lg:w-[50%]">
       <img
@@ -538,87 +674,86 @@ useEffect(() => {
   </div>
 )} */}
 
-{placeDetails.images&&placeDetails?.images?.length > 0 && (
-  <>
-    {placeDetails.images&&placeDetails.images.length === 1 && (
-      <div className="lg:flex lg:justify-center lg:items-center lg:px-2">
-        <div className="lg:w-[50%]">
-          <img
-            className="w-full h-[400px] rounded-md object-cover mt-5 border-2 m-1"
-            src={placeDetails.images[0].url}
-            alt="Main"
-          />
-        </div>
-      </div>
-    )}
+            {placeDetails.images && placeDetails?.images?.length > 0 && (
+              <>
+                {placeDetails.images && placeDetails.images.length === 1 && (
+                  <div className="lg:flex lg:justify-center lg:items-center lg:px-2">
+                    <div className="lg:w-[50%] w-[99%] ">
+                      <img
+                        className="w-full h-[400px] rounded-md object-cover mt-5 border-2 m-1"
+                        src={placeDetails.images[0].url}
+                        alt="Main"
+                      />
+                    </div>
+                  </div>
+                )}
 
-    {placeDetails.images&&placeDetails.images.length === 2 && (
-      <div className="flex flex-wrap justify-center gap-4 mt-5">
-        {placeDetails.images.slice(0, 2).map((img, index) => (
-          <img
-            key={index}
-            className="w-[48%] h-[300px] rounded-md object-cover border"
-            src={img.url}
-            alt={`Image ${index + 1}`}
-          />
-        ))}
-      </div>
-    )}
+                {placeDetails.images && placeDetails.images.length === 2 && (
+                  <div className="flex flex-wrap justify-center gap-4 mt-5">
+                    {placeDetails.images.slice(0, 2).map((img, index) => (
+                      <img
+                        key={index}
+                        className="w-[45%] h-[300px] rounded-md object-cover border"
+                        src={img.url}
+                        alt={`Image ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                )}
 
-    {placeDetails.images&&placeDetails.images.length === 3 ||placeDetails.images&& placeDetails.images.length === 4 ? (
-      <div className="flex flex-wrap justify-center gap-4 mt-5">
-        {placeDetails.images.slice(0, 4).map((img, index) => (
-          <img
-            key={index}
-            className="w-[45%] h-[200px] rounded-md object-cover border"
-            src={img.url}
-            alt={`Image ${index + 1}`}
-          />
-        ))}
-      </div>
-    ) : null}
+                {(placeDetails.images && placeDetails.images.length === 3) ||
+                (placeDetails.images && placeDetails.images.length === 4) ? (
+                  <div className="flex flex-wrap justify-center gap-4 mt-5">
+                    {placeDetails.images.slice(0, 4).map((img, index) => (
+                      <img
+                        key={index}
+                        className="w-[45%] h-[200px] rounded-md object-cover border"
+                        src={img.url}
+                        alt={`Image ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                ) : null}
 
-    {placeDetails.images&&placeDetails.images.length >= 5 && (
-      <div className="hidden md:block lg:flex lg:gap-10 xl: lg:justify-center lg:items-center lg:px-2">
-        <div className="lg:w-[50%]">
-          <img
-            className="w-full h-[400px] rounded-md object-cover mt-5 border-2 m-1"
-            src={placeDetails.images[0].url}
-            alt="Main"
-          />
-        </div>
-        <div className="flex gap-5 justify-center items-center px-1 pl-2 lg:flex lg:gap-3 lg:items-end lg:justify-evenly">
-          <div className="w-[50%]">
-            <img
-              className="w-full h-[200px] rounded-md object-cover mt-5 border"
-              src={placeDetails.images[1]?.url}
-              alt="Sub 1"
-            />
-            <img
-              className="w-full h-[200px] rounded-md object-cover mt-5"
-              src={placeDetails.images[2]?.url}
-              alt="Sub 2"
-            />
-          </div>
-          <div className="w-[50%]">
-            <img
-              className="w-full h-[200px] rounded-md object-cover mt-5"
-              src={placeDetails.images[3]?.url}
-              alt="Sub 3"
-            />
-            <img
-              className="w-full h-[200px] rounded-md object-cover mt-5"
-              src={placeDetails.images[4]?.url}
-              alt="Sub 4"
-            />
-          </div>
-        </div>
-      </div>
-    )}
-  </>
-)}
-
-
+                {placeDetails.images && placeDetails.images.length >= 5 && (
+                  <div className="hidden md:block lg:flex lg:gap-10 xl: lg:justify-center lg:items-center lg:px-2">
+                    <div className="lg:w-[50%]">
+                      <img
+                        className="w-full h-[400px] rounded-md object-cover mt-5 border-2 m-1"
+                        src={placeDetails.images[0].url}
+                        alt="Main"
+                      />
+                    </div>
+                    <div className="flex gap-5 justify-center items-center px-1 pl-2 lg:flex lg:gap-3 lg:items-end lg:justify-evenly">
+                      <div className="w-[50%]">
+                        <img
+                          className="w-full h-[200px] rounded-md object-cover mt-5 border"
+                          src={placeDetails.images[1]?.url}
+                          alt="Sub 1"
+                        />
+                        <img
+                          className="w-full h-[200px] rounded-md object-cover mt-5"
+                          src={placeDetails.images[2]?.url}
+                          alt="Sub 2"
+                        />
+                      </div>
+                      <div className="w-[50%]">
+                        <img
+                          className="w-full h-[200px] rounded-md object-cover mt-5"
+                          src={placeDetails.images[3]?.url}
+                          alt="Sub 3"
+                        />
+                        <img
+                          className="w-full h-[200px] rounded-md object-cover mt-5"
+                          src={placeDetails.images[4]?.url}
+                          alt="Sub 4"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
           </div>
 
           {/* images for mid and large devices--end-- */}
@@ -641,22 +776,23 @@ useEffect(() => {
                 Description
               </h1>
               <p className="w-[90%] opacity-70">
-               {placeDetails?.description||"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esseamet at, quam enim repellendus numquam harum aperiam debitis asapiente?"}
+                {placeDetails?.description ||
+                  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esseamet at, quam enim repellendus numquam harum aperiam debitis asapiente?"}
               </p>
             </div>
           </div>
           {/* img & description end */}
 
           {/* -----card1----- */}
-          {placeDetails.rooms&&placeDetails.rooms.length >= 0 && (
-          <div
-            id="rooms"
-            className="card-wrapper -mt-36 pt-36 md:-mt-40 md:pt-40 md:px-20 md:pr-24"
-          >
-            <h1 className="text-xl font-semibold md:text-3xl pt-9 ">
-              Choose your room
-            </h1>
-            {/* <div className="flex flex-col gap-3 mt-5 md:flex-row md:gap-5 md:w-[95%] ">
+          {placeDetails.rooms && placeDetails.rooms.length >= 0 && (
+            <div
+              id="rooms"
+              className="card-wrapper -mt-36 pt-36 md:-mt-40 md:pt-40 md:px-20 md:pr-24"
+            >
+              <h1 className="text-xl font-semibold md:text-3xl pt-9 ">
+                Choose your room
+              </h1>
+              {/* <div className="flex flex-col gap-3 mt-5 md:flex-row md:gap-5 md:w-[95%] ">
               <div
                 className=" bg-[#F4F4F4] border-[#9427F7] border h-auto max-w-[520px] w-[90%] lg:w-[85%] md:w-[80%] md:h-[310px] p-4 xl:h-[410px]
            rounded-md px-3 text-sm flex flex-col gap-2 md:pt-5 "
@@ -747,66 +883,74 @@ useEffect(() => {
                 </div>
               </div>
             </div> */}
-            <div className="flex flex-col gap-3 mt-5 md:flex-row md:gap-5 md:w-[95%] flex-wrap">
-  {placeDetails?.rooms?.map((room) => (
-    <div
-      key={room.id}
-      className="bg-[#F4F4F4] border-[#9427F7] border max-w-[520px] h-auto w-[90%] lg:w-[85%] md:w-[80%] md:h-[310px] xl:h-[410px] p-4 rounded-md px-3 text-sm flex flex-col gap-2"
-    >
-      <img
-        className="object-cover w-full h-[200px] rounded-md md:h-[140px] xl:h-[220px]"
-        src={room.images[0] || "/fallback-image.jpg"} // fallback if image is missing
-        alt={room.title}
-      />
-      <h1 className="text-[16px] font-semibold pt-2">
-        {room.title}
-      </h1>
-      <ul className="list-disc list-inside flex flex-col gap-2">
-        <li>Room Type: {room.room_type} - Stock: {room.stock}</li>
-        <li>
-          <span className="hover:text-[#9427F7] transition-all inline-flex items-center">
-            <button>More details</button>
-            <i className="scale-[0.8]">
-              <FaAngleDown />
-            </i>
-          </span>
-        </li>
-      </ul>
-      <div className="flex justify-between items-center">
-        <span>
-          <h1>NPR {room.price}</h1>
-          <p>per night</p>
-        </span>
-        {count ? (
-          <button
-            onClick={() => {
-              setCount(false);
-              StickyDivChange();
-              StickyDivChange2();
-            }}
-            className="bg-[#9427F7] shadow-md shadow-[#bab9c6] text-white font-semibold rounded-xl p-[10px] px-[14px] text-sm"
-          >
-            Reserve
-          </button>
-        ) : (
-          <button
-            onClick={() => {
-              setCount(true);
-              StickyDivChange();
-              StickyDivChange2();
-            }}
-            className="bg-[#ffffff] text-[#9427F7] font-semibold shadow-md shadow-[#bab9c6] rounded-xl p-[10px] px-[14px] text-sm flex justify-center items-center gap-1"
-          >
-            <FaCheck />
-            Selected
-          </button>
-        )}
-      </div>
-    </div>
-  ))}
-</div>
-
-          </div>
+              <div className="flex flex-col gap-3 mt-5 md:flex-row md:gap-5 md:w-[95%] flex-wrap">
+                {placeDetails?.rooms?.map((room) => (
+                  <div
+                    key={room.id}
+                    className="bg-[#F4F4F4] border-[#9427F7] border max-w-[520px] h-fit w-[90%] lg:w-[85%] md:w-[80%] md:h-fit xl:h-fit p-4 rounded-md px-3 text-sm flex flex-col gap-2"
+                  >
+                    <img
+                      className="object-cover w-full h-[200px] rounded-md md:h-[140px] xl:h-[220px]"
+                      src={room.images[0] || "/fallback-image.jpg"} // fallback if image is missing
+                      alt={room.title}
+                    />
+                    <h1 className="text-[16px] font-semibold pt-2">
+                      {room.title}
+                    </h1>
+                    <ul className="list-disc list-inside flex flex-col gap-2">
+                      <li>
+                        Room Type: {room.room_type} - Stock: {room.stock}
+                      </li>
+                      <li>
+                        <span className="hover:text-[#9427F7] transition-all">
+                          <button
+                            onClick={() => {
+                              setMoredetails(!moredetails);
+                            }}
+                          >
+                            More details
+                            <i className="scale-[0.8] inline-flex items-center justify-center ">
+                              <br /> <FaAngleDown />
+                            </i>
+                          </button>
+                        </span>
+                      </li>
+                    </ul>
+                    <div className="">{MoredetailsButton()}</div>
+                    <div className="flex justify-between items-center">
+                      <span>
+                        <h1>NPR {room.price}</h1>
+                        <p>per night</p>
+                      </span>
+                      {count ? (
+                        <button
+                          onClick={() => {
+                            setCount(false);
+                            StickyDivChange();
+                            StickyDivChange2();
+                          }}
+                          className="bg-[#9427F7] shadow-md shadow-[#bab9c6] text-white font-semibold rounded-xl p-[10px] px-[14px] text-sm"
+                        >
+                          Reserve
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setCount(true);
+                            StickyDivChange();
+                            StickyDivChange2();
+                          }}
+                          className="bg-[#ffffff] text-[#9427F7] font-semibold shadow-md shadow-[#bab9c6] rounded-xl p-[10px] px-[14px] text-sm flex justify-center items-center gap-1"
+                        >
+                          <FaCheck />
+                          Selected
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           )}
           {/* -----card2----- end  */}
 
@@ -815,13 +959,13 @@ useEffect(() => {
             <h1 className="text-xl font-semibold md:text-3xl pt-9 ">
               Amenities ( Public Area )
             </h1>
-              
-              <div className="flex flex-wrap gap-2 w-[90%] mt-4 [&>*]:bg-zinc-100 [&>*]:rounded-md [&>*]:flex [&>*]:flex-col [&>*]:items-center [&>*]:justify-center [&>*]:p-2 [&>*]:text-zinc-400 ">
-            {amenities.map((items,index) => (
-              <h1  key={index} >
-                {items.icon}
-                {items.title}
-              </h1>
+
+            <div className="flex flex-wrap gap-2 w-[90%] mt-4 [&>*]:bg-zinc-100 [&>*]:rounded-md [&>*]:flex [&>*]:flex-col [&>*]:items-center [&>*]:justify-center [&>*]:p-2 [&>*]:text-zinc-400 ">
+              {amenities.map((items, index) => (
+                <h1 key={index}>
+                  {items.icon}
+                  {items.title}
+                </h1>
               ))}
             </div>
           </div>
@@ -903,13 +1047,13 @@ useEffect(() => {
         <div className="block lg:hidden mt-5 ">
           <div
             className={
-              count ? `w-full h-[120px] mt-5  ` : `w-full h-[320px] mt-5 pl- `
+              count ? `w-full h-[120px] mt-5  ` : `w-full h-[320px] mt-5 `
             }
           >
             {count ? (
               <div
-                className="block md:block lg:hidden max-w-[350px] mt-10 pt-5 ml-20 md:ml-28 md:w-[30%] mx-[15%]
-          h-[120px] border-[0.2px] border-zinc-300 bg-white rounded-md shadow-md shadow-[#bab9c6] p-4 "
+                className="block md:block lg:hidden max-w-[350px] mt-10 pt-5 md:w-[50%] w-[75%] ml-5
+                           h-[120px] border-[0.2px] border-zinc-300 bg-white rounded-md shadow-md shadow-[#bab9c6] p-4 "
               >
                 <h1 className="font-semibold text-lg ">
                   Select room for pricing
@@ -920,8 +1064,8 @@ useEffect(() => {
               </div>
             ) : (
               <div
-                className=" block md:block lg:hidden max-w-[350px] mt-10 pt-5 md:ml-28 mx-[15%] md:w-[38%] w-[75%]
-          h-[320px] border-[0.2px] border-zinc-300 bg-white rounded-md shadow-md shadow-[#bab9c6] "
+                className=" block md:block lg:hidden max-w-[350px] mt-10 pt-5 md:w-[50%] w-[75%] ml-5
+                           h-[320px] border-[0.2px] border-zinc-300 bg-white rounded-md shadow-md shadow-[#bab9c6] "
               >
                 <div className=" border-b border-zinc-300 px-4">
                   <h1 className="font-semibold text-lg ">NPR500.00</h1>
@@ -971,7 +1115,7 @@ useEffect(() => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
