@@ -28,6 +28,7 @@ import { RxCross2 } from "react-icons/rx";
 
 import api from "../../../api";
 import { useParams } from "react-router-dom";
+import StaysForm from "./StaysForm";
 
 const StaysDetails = () => {
   const goodToKnow = [
@@ -206,8 +207,17 @@ const StaysDetails = () => {
     },
   ];
 
-
   const { id } = useParams(); // fetch ID from URL
+
+  const [shareBtn, setShareBtn] = useState(true);
+  const Share = useRef<HTMLInputElement>(null);
+  const btn = () => {
+    {
+      shareBtn
+        ? Share.current?.classList.remove("hidden")
+        : Share.current?.classList.add("hidden");
+    }
+  };
 
   const [count, setCount] = useState(true);
   const ref = useRef<HTMLInputElement>(null);
@@ -247,105 +257,105 @@ const StaysDetails = () => {
     }
   };
 
-    
-    const MoredetailsButton = () => {
-      if (moredetails === false) {
-        return (
+  const MoredetailsButton = () => {
+    if (moredetails === false) {
+      return (
         <div className=" fixed flex flex-col justify-center items-center top-0 left-0 w-full h-full bg-[#00000042] z-[9999]">
-        <div className=" scroll [&>h1]:text-xl scroll-smooth overflow-x-hidden  md:w-[800px] w-[98%] h-[90%] max:md:w-[98%] fixed  rounded-3xl p-8 border border-[#9427F7] bg-white shadow-md shadow-[#bab9c6]">
-          
-          <div className=" w-full flex flex-col items-end justify-end " >
-          <button
-            onClick={() => {
-              setMoredetails(!moredetails);
-            }}
-            className="p-1 text-white font-bold text-xl rounded fixed z-[99999] bg-[#9427F7] -mr-8 opacity-80 "
-          >
-            <RxCross2 />
-          </button>
-            </div>
-            
-          <header className="h-[220px] mb-24 ">
-            <img
-              src="https://dmttourism.com/images/property/13/1740383146_promoted1.jpeg"
-              className="object-cover h-full w-full rounded-md "
-              alt=""
-            />
-            <h1 className="mt-5 text-xl font-semibold md:text-3xl ">
-              About this listing
-            </h1>
-          </header>
-
-          <body className=" overflow-hidden h-fit -mt-6 md:-mt-0 w-[98%] ">
-            <div className="border-b border-zinc-300 pb-4 md:flex md:items-end md:gap-[130px]">
-              <h1 className="text-xl mb-4 font-semibold ">The Spaces</h1>
-              <div className="md:columns-2">
-                {more.map((items, i) => (
-                  <p className="pr-[50px]" key={i}>{items.content}</p>
-                ))}
-              </div>
-            </div>
-
-            <div className=" relative overflow-hidden pt-4 border-b border-zinc-300 pb-4 md:pb-16 md:flex md:items-center md:gap-[143px]">
-              <h1 className="text-xl font-semibold ">Amenities</h1>
-              <div
-                ref={showMoreTog}
-                className=" h-[170px] md:h-[100px] overflow-hidden md:columns-2"
-              >
-                {amenities.map((items, i) => (
-                  <div
-                    key={i}
-                    className="flex gap-2 text-[17px] opacity-60 items-center mt-3  "
-                  >
-                    <p className="text-xl">{items.icon}</p>
-                    <h1>{items.title}</h1>
-                  </div>
-                ))}
-                  </div>
+          <div className=" scroll [&>h1]:text-xl overscroll-contain overflow-x-hidden  md:w-[800px] w-[100%] h-[90%] max:md:w-[98%] fixed  rounded-xl p-8 border border-[#9427F7] bg-white shadow-md shadow-[#bab9c6]">
+            <div className=" w-full flex flex-col items-end justify-end ">
               <button
                 onClick={() => {
-                  toggleShowMore();
+                  setMoredetails(!moredetails);
                 }}
-                className="text-xl md:absolute md:bottom-2 md:left-[510px] font-semibold text-white bg-[#9327f7de] p-2 rounded-md mt-4 mx-1 "
-                >
-                {showMore ? "+ More" : " Show Less"}
+                className="p-1 text-white font-bold text-xl rounded fixed z-[99999] bg-[#9427F7] -mr-7   mt-1 opacity-80 "
+              >
+                <RxCross2 />
               </button>
             </div>
 
-            <div className="border-b border-zinc-300 pb-4 md:py-3 md:flex md:items-center md:gap-[185px]">
-              <h1 className="text-xl mt-5 mb-4 font-semibold ">Prices</h1>
-              <div className=" " >
-              <p>
-                {" "}
-                Extra people:<span className="opacity-80"> No Charge</span>
-              </p>
-              <p>
-                Weekly discount (%) :
-                <span className="opacity-80">NPR 0 /week</span>
-              </p>
-              <p>
-                {" "}
-                Monthly discount
-                <span className="opacity-80">NPR 0 /month</span>
-              </p>
-              </div>
-            </div>
-            <div className="border-b border-zinc-300 pb-4 md:py-3 md:flex md:items-center md:gap-24">
-              <h1 className="text-xl mt-5 mb-4 font-semibold ">
-                Safety Features
+            <header className="h-[220px] mb-24 ">
+              <img
+                src="https://dmttourism.com/images/property/13/1740383146_promoted1.jpeg"
+                className="object-cover h-full w-full rounded-md "
+                alt=""
+              />
+              <h1 className="mt-5 text-xl font-semibold md:text-3xl ">
+                About this listing
               </h1>
-              <div className="md:columns-2"> 
-              {amenities.map((items, i) => (
-                <div className="" >
-                <p key={i} className="mr-12">
-                  {items.title}
-                </p>
+            </header>
+
+            <body className=" overflow-hidden h-fit -mt-6 md:-mt-0 w-[98%] ">
+              <div className="border-b border-zinc-300 pb-4 md:flex md:items-end md:gap-[130px]">
+                <h1 className="text-xl mb-4 font-semibold ">The Spaces</h1>
+                <div className="md:columns-2">
+                  {more.map((items, i) => (
+                    <p className="pr-[50px]" key={i}>
+                      {items.content}
+                    </p>
+                  ))}
                 </div>
-              ))}
               </div>
-            </div>
-          </body>
-        </div>
+
+              <div className=" relative overflow-hidden pt-4 border-b border-zinc-300 pb-4 md:pb-16 md:flex md:items-center md:gap-[143px]">
+                <h1 className="text-xl font-semibold ">Amenities</h1>
+                <div
+                  ref={showMoreTog}
+                  className=" h-[170px] md:h-[100px] overflow-hidden md:columns-2"
+                >
+                  {amenities.map((items, i) => (
+                    <div
+                      key={i}
+                      className="flex gap-2 text-[17px] opacity-60 items-center mt-3  "
+                    >
+                      <p className="text-xl">{items.icon}</p>
+                      <h1>{items.title}</h1>
+                    </div>
+                  ))}
+                </div>
+                <button
+                  onClick={() => {
+                    toggleShowMore();
+                  }}
+                  className="text-xl md:absolute md:bottom-2 md:left-[510px] font-semibold text-white bg-[#9327f7de] p-2 rounded-md mt-4 mx-1 "
+                >
+                  {showMore ? "+ More" : " Show Less"}
+                </button>
+              </div>
+
+              <div className="border-b border-zinc-300 pb-4 md:py-3 md:flex md:items-center md:gap-[185px]">
+                <h1 className="text-xl mt-5 mb-4 font-semibold ">Prices</h1>
+                <div className=" ">
+                  <p>
+                    {" "}
+                    Extra people:<span className="opacity-80"> No Charge</span>
+                  </p>
+                  <p>
+                    Weekly discount (%) :
+                    <span className="opacity-80">NPR 0 /week</span>
+                  </p>
+                  <p>
+                    {" "}
+                    Monthly discount
+                    <span className="opacity-80">NPR 0 /month</span>
+                  </p>
+                </div>
+              </div>
+              <div className="border-b border-zinc-300 pb-4 md:py-3 md:flex md:items-center md:gap-24">
+                <h1 className="text-xl mt-5 mb-4 font-semibold ">
+                  Safety Features
+                </h1>
+                <div className="md:columns-2">
+                  {amenities.map((items, i) => (
+                    <div className="">
+                      <p key={i} className="mr-12">
+                        {items.title}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </body>
+          </div>
         </div>
       );
     }
@@ -458,9 +468,9 @@ const StaysDetails = () => {
     <div className="relative">
       {/* -----the sticky divs----- */}
 
-      <div className=" h-[90%] w-full md:px-16 absolute top-[500px] left-5 md:top-[500px]  flex justify-between mt-6 ">
+      <div className=" lg:h-[90%] w-full h-[90%] md:px-16 absolute top-[500px] md:top-[500px]  flex justify-between mt-6 ">
         {/*sticky nav bar*/}
-        <div className=" bg-white place-content-center  md:pl-20 lg:w-[68%] md:w-[95%] border-zinc-300 w-[91%] sticky top-[75px]  z-50  md:h-[90px] h-[93px] border-b border-t ">
+        <div className=" bg-white w-full place-content-center pl-5  md:pl-20 lg:w-[68%] md:w-[95%] border-zinc-300 sticky top-[75px]  z-50  md:h-[90px] h-[93px] border-b border-t ">
           <div className="font-semibold text-sm flex gap-4 transition-all md:gap-8 md:text-xl  ">
             <a href="#description" className="hover:text-[#9427F7]  ">
               Details
@@ -509,13 +519,14 @@ const StaysDetails = () => {
             <p className="py-2 text-sm ">NPR500.00</p>
           </div>
           <div className="flex flex-col  items-center  mt-4 gap-4 text-white ">
-            <button className="p-3 shadow-md shadow-[#bab9c6]  bg-[#9427F7] rounded ">
+            <a
+              href="/staysForm/6"
+              className="p-3 shadow-md shadow-[#bab9c6]  bg-[#9427F7] rounded "
+            >
               Request to Book
-            </button>
+            </a>
 
-            <p className="w-[80%] flex text-center justify-center items-center text-black ">
-              You’ll be able to review before paying.
-            </p>
+            <p className="w-[80%] flex text-center justify-center items-center text-black "></p>
 
             <div className="inline-flex gap-4">
               <a
@@ -565,8 +576,12 @@ const StaysDetails = () => {
 
               <div className="relatrive w-fit h-fit group ">
                 <button
+                  onClick={() => {
+                    setShareBtn(!shareBtn);
+                    btn();
+                  }}
                   className=" shadow-md shadow-[#bab9c6]  mb-1 flex justify-center items-center border rounded-md p-[10px] px-[14px] border-[#9427F7] text-sm opacity-70
-             group-hover:bg-[#9427F7] group-hover:text-white transition-all "
+             hover:bg-[#9427F7] hover:text-white transition-all "
                 >
                   <i className="mr-1.5">
                     <LuShare />
@@ -575,8 +590,9 @@ const StaysDetails = () => {
                   <IoCaretDownOutline />
                 </button>
                 <ul
-                  className=" shadow-md shadow-[#bab9c6]  group-hover:block transition-all absolute z-50 hidden text-zinc-500 w-fit h-fit rounded-md [&>*]:rounded-md
-               bg-zinc-100 border border-[#ebd5ff] text-[13px] md:text-sm text-nowrap right-5 md:right-9 "
+                  ref={Share}
+                  className=" shadow-md shadow-[#bab9c6] hidden transition-all absolute z-50  text-zinc-500 w-fit h-fit rounded-md [&>*]:rounded-md
+               bg-zinc-100 border border-[#ebd5ff] text-[13px] md:text-sm text-nowrap right-0 md:right-9 "
                 >
                   <li className=" hover:bg-[#BA92E9] p-1 px-2 hover:text-white ">
                     <a href="https://facebook.com">share on Facebook</a>
@@ -887,7 +903,7 @@ const StaysDetails = () => {
                 {placeDetails?.rooms?.map((room) => (
                   <div
                     key={room.id}
-                    className="bg-[#F4F4F4] border-[#9427F7] border max-w-[520px] h-fit w-[90%] lg:w-[85%] md:w-[80%] md:h-fit xl:h-fit p-4 rounded-md px-3 text-sm flex flex-col gap-2"
+                    className="bg-[#F4F4F4] border-[#9427F7] border max-w-[520px] h-fit w-[87.5%] lg:w-[85%] md:w-[80%] md:h-fit xl:h-fit p-4 rounded-md px-3 text-sm flex flex-col gap-2"
                   >
                     <img
                       className="object-cover w-full h-[200px] rounded-md md:h-[140px] xl:h-[220px]"
@@ -1079,9 +1095,12 @@ const StaysDetails = () => {
                   <p className="py-2 text-sm ">NPR500.00</p>
                 </div>
                 <div className="flex flex-col  items-center  mt-4 gap-4 text-white ">
-                  <button className="p-3 shadow-md shadow-[#bab9c6]  bg-[#9427F7] rounded ">
+                  <a
+                    href="/staysForm/6"
+                    className="p-3 shadow-md shadow-[#bab9c6]  bg-[#9427F7] rounded "
+                  >
                     Request to Book
-                  </button>
+                  </a>
 
                   <p className="w-[80%] flex text-center justify-center items-center text-black ">
                     You’ll be able to review before paying.

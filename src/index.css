@@ -286,3 +286,24 @@ body::-webkit-scrollbar-thumb:hover {
 .scroll::-webkit-scrollbar-thumb:hover {
   background: var(--primary) !important;
 }
+
+/* set the default date text color */
+input[type="date"]::-webkit-datetime-edit-year-field,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field {
+  color: black;
+}
+
+/* set the slashes to gray 700 */
+input[type="date"]::-webkit-datetime-edit-text {
+  color: black;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+/* input[type="date"]::-webkit-input-placeholder {
+   visibility: hidden;
+}
+ */
+
