@@ -44,7 +44,7 @@ const StaysForm = () => {
                 -
               </button>
               <input
-                className="border rounded h-11 mx-2 p-3 border-[#9C59DF]"
+                className="border rounded h-11 mx-2 w-[200px] p-3 border-[#9C59DF]"
                 type="number"
                 min={1}
                 value={value}

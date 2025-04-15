@@ -286,3 +286,8 @@ body::-webkit-scrollbar-thumb:hover {
 .scroll::-webkit-scrollbar-thumb:hover {
   background: var(--primary) !important;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

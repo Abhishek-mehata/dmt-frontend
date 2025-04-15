@@ -19,6 +19,8 @@ import { RootAppState } from "../../../redux/store";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { getBook } from "../../../redux/actions/book";
 import StickyBox from "react-sticky-box";
+import BookingsCard from "./BookingsCard";
+import ReservationEventPage from "./ReservationEventPage";
 
 const reservationTabs = [
   {
@@ -209,85 +211,90 @@ const ReservationPage: FC = () => {
   const onSelectEvent: MenuProps["onClick"] = ({ key }) => setSelectEvent(key);
 
   return (
-    <section className={`flex flex-col flex-1 h-full w-full bg-white p-8 `}>
-      <StickyBox offsetTop={0} offsetBottom={0} style={{ zIndex: 1 }}>
-        <div className={`flex items-center justify-between w-full`}>
-          <h1
-            className={`text-2xl text-dark-blue font-semibold capitalize`}
-          >{`${selectTab}`}</h1>
-          <div className="flex items-center justify-center gap-4">
-            <Dropdown
-              menu={{
-                items: reservationTabs,
-                selectable: true,
-                defaultSelectedKeys: ["0"],
-                onClick: onSelectTab,
-              }}
-              trigger={["click"]}
-            >
-              <Button
+    <>
+      <section className={`flex flex-col flex-1 w-full bg-white p-8 `}>
+        <StickyBox offsetTop={0} offsetBottom={0} style={{ zIndex: 1 }}>
+          <div className={`flex items-center justify-between w-full`}>
+            <h1
+              className={`text-2xl text-dark-blue font-semibold capitalize`}
+            >{`${selectTab}`}</h1>
+            <div className="flex items-center justify-center gap-4">
+              <Dropdown
+                menu={{
+                  items: reservationTabs,
+                  selectable: true,
+                  defaultSelectedKeys: ["0"],
+                  onClick: onSelectTab,
+                }}
+                trigger={["click"]}
+              >
+                {/* <Button
                 title={selectTab}
                 iconPlacement="right"
                 icon={
                   <MdKeyboardArrowDown  />
-                }
-              />
-            </Dropdown>
+                  }
+                  /> */}
+              </Dropdown>
+            </div>
           </div>
-        </div>
-      </StickyBox>
+        </StickyBox>
 
-      <div className={`flex items-center justify-between w-full mt-4`}>
-        <h1 className={`text-2xl text-dark-blue font-semibold capitalize`}>{`${
-          data?.length || 0
-        } ${selectEvent} ${selectCategory} Reservation`}</h1>
-        <div className="flex items-center justify-center gap-4">
+        <div className={`flex items-center justify-between w-full mt-4`}>
+          <h1
+            className={`text-2xl text-dark-blue font-semibold capitalize`}
+          >{`${
+            data?.length || 0
+          } ${selectEvent} ${selectCategory} Reservation`}</h1>
           <div className="flex items-center justify-center gap-4">
             <div className="flex items-center justify-center gap-4">
+              <div className="flex items-center justify-center gap-4">
+                <Dropdown
+                  menu={{
+                    items: events,
+                    selectable: true,
+                    defaultSelectedKeys: ["0"],
+                    onClick: onSelectEvent,
+                  }}
+                  trigger={["click"]}
+                >
+                  <Button
+                    title={selectEvent}
+                    iconPlacement="right"
+                    icon={<MdKeyboardArrowDown />}
+                  />
+                </Dropdown>
+              </div>
               <Dropdown
                 menu={{
-                  items: events,
+                  items: category,
                   selectable: true,
                   defaultSelectedKeys: ["0"],
-                  onClick: onSelectEvent,
+                  onClick: onSelectCategory,
                 }}
                 trigger={["click"]}
               >
                 <Button
-                  title={selectEvent}
+                  title={selectCategory}
                   iconPlacement="right"
-                  icon={
-                    <MdKeyboardArrowDown/>
-                  }
+                  icon={<MdKeyboardArrowDown />}
                 />
               </Dropdown>
             </div>
-            <Dropdown
-              menu={{
-                items: category,
-                selectable: true,
-                defaultSelectedKeys: ["0"],
-                onClick: onSelectCategory,
-              }}
-              trigger={["click"]}
-            >
-              <Button
-                title={selectCategory}
-                iconPlacement="right"
-                icon={
-                  <MdKeyboardArrowDown  />
-                }
-              />
-            </Dropdown>
           </div>
         </div>
-      </div>
-      <ul className={`flex flex-col gap-6 w-full mt-4`}>
-        {data?.map((item: any, i: number) => (
-          <ReservationCard data={item} key={i} />
-        ))}
-      </ul>
-    </section>
+        <ul className={`flex flex-col gap-6 w-full mt-4`}>
+          {data?.map((item: any, i: number) => (
+            <ReservationCard data={item} key={i} />
+          ))}
+        </ul>
+      </section>
+
+      <body className=" relative p-8 h-screen w-full flex flex-col gap-10 ">
+       <BookingsCard />
+       <ReservationEventPage />
+      </body>
+    </>
   );
 };
 

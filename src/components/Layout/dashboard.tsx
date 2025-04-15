@@ -17,7 +17,7 @@ const navss = {
   BUYER: [
     { name: "Dashboard", href: "dashboard", icon: <GiSpeedometer /> },
     { name: "Profile", href: "profile", icon: <LuUser /> },
-    { name: "Reservations", href: "reservation", icon: <PiBookBookmark /> },
+    { name: "Bookings", href: "reservation", icon: <PiBookBookmark /> },
   ],
   SELLER: [
     { name: "Dashboard", href: "dashboard", icon: <GiSpeedometer /> },
