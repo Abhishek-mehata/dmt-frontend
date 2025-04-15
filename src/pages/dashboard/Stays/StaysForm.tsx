@@ -9,7 +9,6 @@ const StaysForm = () => {
     <>
       <div className=" p-10 lg:px-32 lg:flex lg:gap-20 ">
 
-
         <main>
           <div className="flex flex-col gap-10 border-b pb-10 border-[#DEE2E6] ">
             <h1 className="text-3xl font-semibold">Confirm and pay</h1>
@@ -30,6 +29,7 @@ const StaysForm = () => {
             </div>
             <div>
               <p className="mb-2">Guests:</p>
+
               <button
                 onClick={() => {
                   if (value >= 2) {
@@ -60,6 +60,8 @@ const StaysForm = () => {
               </button>
             </div>
           </div>
+
+
           <div className="pt-10 pb-5 border-b border-[#DEE2E6] ">
             <div className="flex flex-col gap-9">
               <h1 className="text-2xl font-semibold ">
@@ -93,7 +95,8 @@ const StaysForm = () => {
         </main>
 
 
-        <div className="card-container lg:w-[35%] lg:min-w-[300px] flex flex-col gap-5 h-fit border border-[#DEE2E6] rounded-xl p-5 sticky top-24 ">
+
+        <div className="card-container lg:w-[35%] lg:min-w-[300px] flex flex-col gap-5 h-fit border  border-[#DEE2E6] rounded-xl p-5 sticky top-24 ">
           <div className="border-b-2 border-[#DEE2E6] pb-5 ">
             <img
               className="object-cover h-36 w-full rounded-xl "
@@ -117,7 +120,6 @@ const StaysForm = () => {
             <h1>525</h1>
           </div>
         </div>
-
 
       </div>
     </>

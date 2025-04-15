@@ -238,6 +238,8 @@ import AuthGuard from "../components/guards/AuthGuard";
 // import StaysD from "../pages/dashboard/Stays/StaysDetails";
 import StaysD from "../pages/dashboard/Stays/StaysDetails"
 import StaysForm from "../pages/dashboard/Stays/StaysForm";
+// import EventsForm from "../pages/dashboard/Events/event-details/EventsForm";
+import EventsReservation from "../pages/dashboard/Events/event-details/EventsReservation";
 
 const Loadable = (Component: any) => (props: any) => {
   return (
@@ -334,7 +336,7 @@ export default function Router() {
       element: (
         <>
           <AuthGuard>
-          <DashboardLayout />
+            <DashboardLayout />
           </AuthGuard>
         </>
       ),
@@ -391,7 +393,11 @@ export default function Router() {
         ///Event details
         {
           path: "/events/:id",
-          element: <EventDetails  />,
+          element: <EventDetails />,
+        },
+        {
+          path: "/eventsForm/:id",
+          element: <EventsReservation />,
         },
         // Stays Details page
         {
@@ -401,7 +407,7 @@ export default function Router() {
         //stays details form page
         {
           path: "/staysForm/:id",
-          element: <StaysForm/>,
+          element: <StaysForm />,
         },
 
         {
